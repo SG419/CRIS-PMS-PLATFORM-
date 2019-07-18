@@ -1,0 +1,2302 @@
+<HTML><HEAD>
+
+
+        <meta http-equiv="pragma" content="no-cache"/>
+        <meta http-equiv="expires" content="0"/>
+        <meta http-equiv="cache-control" content="no-cache"/>
+        
+        <TITLE>Customer Profile</TITLE></HEAD>
+        <script language="JavaScript" src="./js/validateDate.js" type="text/JavaScript"></script>
+        <script language="JavaScript" src="./js/custprofile1.js" type="text/JavaScript"></script>
+        <script language="JavaScript" src="./js/common.js" type="text/JavaScript"></script>
+        <script>
+        function datefrmt(dId,mId,yId,tId){
+        var dObj = document.getElementById(dId);
+        var mObj = document.getElementById(mId);
+        var yObj = document.getElementById(yId);
+        var tObj = document.getElementById(tId);
+        if(isDate(dObj.value+'/'+mObj.value+'/'+yObj.value)){
+        tObj.value = dObj.value+'/'+mObj.value+'/'+yObj.value;return true;
+        }else{
+        strDt = (tObj.value).split('/');
+        dObj.value = strDt[0];
+        mObj.value = strDt[1];
+        yObj.value = strDt[2];
+        return false;
+        }
+        }
+        
+        function datefrmt_lessthantoday(dId,mId,yId,tId){
+        var dObj = document.getElementById(dId);
+        var mObj = document.getElementById(mId);
+        var yObj = document.getElementById(yId);
+        var tObj = document.getElementById(tId);
+        var today = new Date(2019,5,17,0,0,0);
+        if(isDate(dObj.value+'/'+mObj.value+'/'+yObj.value)){
+        var date1 = new Date(yObj.value,parseFloat(mObj.value)-1,dObj.value,0,0,0);
+        if(date1>today){
+        strDt = (tObj.value).split('/');
+        dObj.value = strDt[0];
+        mObj.value = strDt[1];
+        yObj.value = strDt[2];
+        return false;
+        }else{
+        tObj.value = dObj.value+'/'+mObj.value+'/'+yObj.value;return true;
+        }}else{
+        strDt = (tObj.value).split('/');
+        dObj.value = strDt[0];
+        mObj.value = strDt[1];
+        yObj.value = strDt[2];
+        return false;
+        }
+        }
+        
+        
+        function incrementClock()
+        {
+            window.document.frmcustomer.imgcaptcha.src='';window.document.frmcustomer.imgcaptcha.src='../Captcha.jpg?random='+new Date().getTime();
+        }
+        
+        function toggleoffice(opt)
+        {
+            if(opt==1)
+            {
+                window.document.frmcustomer.division.value='-1';
+                window.document.frmcustomer.division.disabled=true;
+                window.document.frmcustomer.zone.disabled=false;
+                //window.document.getElementById('td_1').style.backgroundColor = "#aaccff";
+                window.document.getElementById('td_2').style.backgroundColor = "#aaccff";
+                //window.document.getElementById('td_3').style.backgroundColor = "#dedede";
+                window.document.getElementById('td_4').style.backgroundColor = "#dedede";
+            }
+            
+            if(opt==2)
+            {
+                window.document.frmcustomer.zone.value='-1';
+                window.document.frmcustomer.zone.disabled=true;
+                window.document.frmcustomer.division.disabled=false;
+                //window.document.getElementById('td_1').style.backgroundColor = "#dedede";
+                window.document.getElementById('td_2').style.backgroundColor = "#dedede";
+                //window.document.getElementById('td_3').style.backgroundColor = "#aaccff";
+                window.document.getElementById('td_4').style.backgroundColor = "#aaccff";
+            }
+        }
+        </script>
+        <BODY bgcolor="#ffffff">
+        <FORM name="frmcustomer" method="post" action="../webreglh" onSubmit="return false" enctype="multipart/form-data">
+        <TABLE align="center" border="1" bgcolor="#aaccff">
+        <TR>
+        <TD  bgcolor="#aabbee" colspan=4 align="center"><b>Lease Holder Web Registration</b></TD></TR>
+        <TR>
+        <TD colspan="4">
+        <table width="100%" border="1">
+        <tr>
+        <td colspan="6" bgcolor="#99aadd"><b>1. Please Select The Office You want to Register and Registration Category</b>(<font color="#e305e7">Please select either zone or division where you want to register yourself</font>)</td>
+        </tr>
+        <tr>
+        <td id="td_1">
+        <input type="radio" name="regtype" value="1" onClick="toggleoffice(1)"> Zone
+        </td>
+        <td id="td_2" style="background-color: #dedede">Zone Code <select NAME="zone" disabled>
+        <option value="-1">--Select Registration Railway--</option>
+                         <option value ="0">
+        0-KONKAN RAIL CORP     
+         </option>
+         <option value ="1">
+        1-CENTRAL              
+         </option>
+         <option value ="10">
+        10-EAST-CENTRAL         
+         </option>
+         <option value ="11">
+        11-NORTH WESTERN        
+         </option>
+         <option value ="12">
+        12-EAST COAST RAILWAY   
+         </option>
+         <option value ="13">
+        13-NORTH-CENTRAL        
+         </option>
+         <option value ="14">
+        14-SOUTH-EAST-CENTRAL   
+         </option>
+         <option value ="15">
+        15-SOUTH-WEST RAILWAYS  
+         </option>
+         <option value ="16">
+        16-WEST-CENTRAL         
+         </option>
+         <option value ="2">
+        2-EASTERN              
+         </option>
+         <option value ="3">
+        3-NORTHERN             
+         </option>
+         <option value ="4">
+        4-NORTH-EASTERN        
+         </option>
+         <option value ="5">
+        5-NORTH-EAST-FRONTIER  
+         </option>
+         <option value ="6">
+        6-SOUTHERN             
+         </option>
+         <option value ="7">
+        7-SOUTH-EASTERN        
+         </option>
+         <option value ="8">
+        8-WESTERN              
+         </option>
+         <option value ="9">
+        9-SOUTH-CENTRAL        
+         </option>
+        
+                    </select></td>
+        <td id="td_3"><input type="radio" name="regtype" value="0" onClick="toggleoffice(2)" checked> Division</td>
+        <td id="td_4">
+        Division Code:<select NAME="division">
+        <option value="-1">--Select Registration Division(If Applicable)--</option>
+                         <option value ="ADI">
+        ADI-AHMADABAD            
+         </option>
+         <option value ="ADRA">
+        ADRA-ADRA                
+         </option>
+         <option value ="AGRA">
+        AGRA-AGRA               
+         </option>
+         <option value ="AII">
+        AII -AJMER               
+         </option>
+         <option value ="ALD">
+        ALD-ALLAHABAD
+         </option>
+         <option value ="APDJ">
+        APDJ-ALIPUR DUAR         
+         </option>
+         <option value ="ASN">
+        ASN -ASANSOL             
+         </option>
+         <option value ="BKN">
+        BKN-BIKANER
+         </option>
+         <option value ="BPL">
+        BPL-BHOPAL               
+         </option>
+         <option value ="BRC">
+        BRC -VADODRA             
+         </option>
+         <option value ="BSB">
+        BSB -VARANASI            
+         </option>
+         <option value ="BSL">
+        BSL -BHUSAVAL            
+         </option>
+         <option value ="BSP">
+        BSP-BILASPUR
+         </option>
+         <option value ="BVC">
+        BVC -BHAVNAGAR           
+         </option>
+         <option value ="BZA">
+        BZA -VIJAYAWADA          
+         </option>
+         <option value ="CKP">
+        CKP -CHAKRADHARPUR       
+         </option>
+         <option value ="CRIS">
+        CRIS-CRIS
+         </option>
+         <option value ="CSTM">
+        CSTM-MUMBAI              
+         </option>
+         <option value ="DHN">
+        DHN -DHANBAD             
+         </option>
+         <option value ="DLI">
+        DLI -DELHI               
+         </option>
+         <option value ="DNR">
+        DNR -DANAPUR             
+         </option>
+         <option value ="FZR">
+        FZR -FIROZPUR            
+         </option>
+         <option value ="GNT">
+        GNT-GUNTUR               
+         </option>
+         <option value ="GTL">
+        GTL -GUNTAKAL            
+         </option>
+         <option value ="HWH">
+        HWH -HOWRAH              
+         </option>
+         <option value ="HYB">
+        HYB -HYDERABAD           
+         </option>
+         <option value ="IZN">
+        IZN -IZZATNAGAR          
+         </option>
+         <option value ="JBP">
+        JBP -JABALPUR            
+         </option>
+         <option value ="JHS">
+        JHS -JHANSI              
+         </option>
+         <option value ="JP">
+        JP  -JAIPUR              
+         </option>
+         <option value ="JU">
+        JU  -JODHPUR             
+         </option>
+         <option value ="KAWR">
+        UBL -KARWAR              
+         </option>
+         <option value ="KGP">
+        KGP -KHARAGPUR           
+         </option>
+         <option value ="KIR">
+        KIR-KATIHAR              
+         </option>
+         <option value ="KOTA">
+        KOTA-KOTA                
+         </option>
+         <option value ="KUR">
+        KUR -KHURDA ROAD         
+         </option>
+         <option value ="LJN">
+        LJN -LUCKNOW             
+         </option>
+         <option value ="LKO">
+        LKO -LUCKNOW             
+         </option>
+         <option value ="LMG">
+        LMG -LUMDING             
+         </option>
+         <option value ="MAS">
+        MAS -MADRAS              
+         </option>
+         <option value ="MB">
+        MB  -MORADABAD           
+         </option>
+         <option value ="MCC">
+        MCC -BOMBAY CENTRAL      
+         </option>
+         <option value ="MDU">
+        MDU -MADURAI             
+         </option>
+         <option value ="MGS">
+        MGS-MUGALSARAI           
+         </option>
+         <option value ="MLDT">
+        MLDT-MALDA               
+         </option>
+         <option value ="MYS">
+        MYS -MYSORE              
+         </option>
+         <option value ="NAG">
+        NAG-NAGPUR(N.G)          
+         </option>
+         <option value ="NED">
+        NED-NANDED               
+         </option>
+         <option value ="NGP">
+        NGP -NAGPUR(B.G)         
+         </option>
+         <option value ="PGT">
+        PGT -PALGHAT             
+         </option>
+         <option value ="PR">
+        PR-PAK RAILWAY
+         </option>
+         <option value ="PUNE">
+        PUNE-PUNE                
+         </option>
+         <option value ="R">
+        R-RAIPUR                 
+         </option>
+         <option value ="RJT">
+        RJT -RAJKOT              
+         </option>
+         <option value ="RN">
+        UBL -RATNAGIRI           
+         </option>
+         <option value ="RNC">
+        RNC-RANCHI               
+         </option>
+         <option value ="RNY">
+        RNY-RANGIYA              
+         </option>
+         <option value ="RTM">
+        RTM -RATLAM              
+         </option>
+         <option value ="SA">
+        SA-SALEM
+         </option>
+         <option value ="SBC">
+        SBC -BANGALORE           
+         </option>
+         <option value ="SBP">
+        SBP-SAMBALPUR            
+         </option>
+         <option value ="SC">
+        SC  -SECUNDRABAD         
+         </option>
+         <option value ="SDAH">
+        SDAH-SEALDAH             
+         </option>
+         <option value ="SEE">
+        SEE -SONPUR              
+         </option>
+         <option value ="SPJ">
+        SPJ -SAMASTIPUR          
+         </option>
+         <option value ="SUR">
+        SUR -SOLAPUR             
+         </option>
+         <option value ="TPJ">
+        TPJ -TIRUCHIRAPALLI      
+         </option>
+         <option value ="TSK">
+        TSK -TINSUKIA            
+         </option>
+         <option value ="TVC">
+        TVC -TRIVANDRUM          
+         </option>
+         <option value ="UBL">
+        UBL -HUBLI               
+         </option>
+         <option value ="UMB">
+        UMB-AMBALA CANTT         
+         </option>
+         <option value ="WAT">
+        WAT -WALTAIR             
+         </option>
+        </select>
+        </td>
+        
+        <TD><b>Registration Category <font color="RED">*</font></b>
+        <select name="regcategory">  <option value="1">A</option>
+        <option value="2">B</option>
+        <option value="3">C</option>
+        
+        </select></TD>
+        </tr>
+        </table>
+        </TD>
+        </TR>
+        <TR>
+        <TD colspan="4">
+        <table width="100%" border="1">
+        <TR><TD colspan="6" bgcolor="#99aadd"><b>2. Nature of the Lease Holder</b></TD></TR>
+        <TR>
+        <TD>Type</td><td>
+        <select name="nature" onchange="notBlank_chkInd(frmcustomer.firmname);notBlank_chkInd(frmcustomer.address);toggleNature();">
+        <option value="0">INDIVIDUAL</option>
+        <option value="1">FIRM</option>
+        <option value="2">COMPANY</option>
+        <option value="3">SOCIETY</option>
+        <option value="5">JOINT VENTURE</option>
+        
+        </select></td>
+        <td>Current Business Profile:</td>
+         <TD><input type="text" size="20" maxlength="50" name="business_profile" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;" autocomplete="off" onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')"></td>
+         <td>Partnership firm:</td>
+         <td>
+          <select name="partnership_firm">
+          <option value="-1">---</option>
+          <option value="0">NO</option>
+        <option value="1">YES</option>
+        </select>
+          <input type="file" name="filepatnerdoc">
+        </TD>
+        </TR>
+        </table></TD></TR>
+        <TR>
+        <TD colspan="4">
+        <table width="100%" border="1">
+        <TR><TD colspan="6" bgcolor="#99aadd"><b>3. Detail of the applicant</b></TD></TR>
+        <TR>
+          <TD>Applicant Name - Address<FONT color="RED">*</FONT></TD>
+        <TD colspan="3">
+        <input name="name" type="text" size="20" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank(this);toggleAppName()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+        -
+        <input type="text" maxlength="200" size="55" name="applicant_address" onChange="this.value = (this.value).toUpperCase();toggleAppAddress()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')">
+        Photo&nbsp; <input type="file" name="filephotoapp">
+        </TD>
+        <!--<TD></TD>-->
+        </TR>
+        <TR>
+        <TD>Address proof type</TD>
+        <TD>
+        <select name="addressproftype">
+        <option value="-1">--Select Address Proof</option>
+        <option value="1">Latest Electricity bill</option>
+        <option value="10">Unique Identification Card Aadhaar</option>
+        <option value="2">Latest Telephone(Landline or Postpaid connection) bill</option>
+        <option value="3">Latest Bank account statement/bank pass book</option>
+        <option value="4">Passport</option>
+        <option value="5">Voters Identity card</option>
+        <option value="6">Property tax assessment order</option>
+        <option value="7">Driving License</option>
+        <option value="8">Ration card</option>
+        <option value="9">Address as in Latest ITR</option>
+        
+        </select>
+        </TD>
+        <TD>Address proof document</TD><TD><input type="file" name="fileadrsprfdocu"></TD>
+        </TR>
+        <TR>
+        <TD>Photo ID proof type</TD>
+        <TD colspan="3">
+        <select name="photoidproftype">
+        <option value="-1">--Select Photo ID Proof</option>
+        <option value="1">Voter Photo identity card issued by Election Commision of India</option>
+        <option value="2">Passport</option>
+        <option value="3">PAN Card issued by Income Tax Department.</option>
+        <option value="4">Driving Licence issued by RTO</option>
+        <option value="5">Nationalized Bank Passbok with photograph</option>
+        <option value="6">Credit cards issued by banks with laminated photograph</option>
+        <option value="7">Unique Identification Card Aadhaar</option>
+        <option value="8">Photo identity cards having serial number issued by Public Sector Undertaking of State/Central Government, District Administration, Municipal bodies and Panchayat Administration</option>
+        
+        </select>
+        </TD>
+        </tr>
+        <tr>
+        <TD>Photo ID document</TD><TD><input type="file" name="filephtoidprfdocu"></TD>
+        </TR>
+        <TR><TD colspan="3" class="style1">Telephone No - Off :<input name="tele_off" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+        <!--</TD><TD colspan="3">-->
+        Resi. :
+        <input name="tele_res" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+        Mobile :
+        <input name="tele_mob" type="text" size="11" maxlength="10" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+        Fax :
+        <input name="tele_fax" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+        </TD>
+        <TD class="style1"><B>Email</B>
+        <!--</TD><TD>-->
+        <input name="emailid" type="text" size="30" maxlength="50" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@-_=+[]{}\|./')">
+         </TD>
+          </TR>
+        <TR>
+          <TD colspan="4">Firm's/ Company's/ Society's Name<FONT color="RED">*</FONT>
+        <!--  </TD>-->
+        <!--  <TD>-->
+          <input name="firmname" type="text" id="firmname2" size="55" readOnly class="ReadOnlyObj" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank_chkInd(this)" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+          </TR>
+        <TR>
+          <TD colspan="4">Firm's/ Company's/ Society's Address<FONT color="RED">*</FONT>
+        <!--  </TD><TD colspan="3">-->
+        <input name="address" type="text" size=80 maxlength="75" readOnly class="ReadOnlyObj" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank_chkInd(this)" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')">
+        </TD>
+        </TR>
+        <TR>
+              <td colspan="4" bgcolor="#76567a">Details of Registration of Firm/Company/Society</TD>
+          </TR>
+          <TR>
+          <TD>Certificate No</TD>
+          <TD><input type="text" maxlength="50" size="25" name="registration_dtls" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+          <TD>Issuing Authority</TD>
+          <TD><input type="text" name="txtissuauth" size="25" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+          </TR>
+          <TR>
+          <TD>Issue Date</TD>
+          <td>
+          <input type="text" name="txtregissuedt" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">&nbsp;DD/MM/YYYY
+          </td>
+          <td colspan="2"><input type="file" name="fileregsdtl"></td>
+          </TR>
+          <TR>
+              <td colspan="4" bgcolor="#76567a">Bank Account Details</TD>
+          </TR>
+          <TR>
+          <TD>Account No</TD>
+          <TD><input type="text" maxlength="25" size="25" name="bankaccntdtls" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+          <TD>IFSC Code</TD>
+          <TD><input type="text" name="bankifsccode" size="20" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+          </TR>
+          <TR>
+          <TD>MICR No.</TD>
+          <TD><input type="text" maxlength="50" size="25" name="bankmicr" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+          <TD>Bank</TD>
+          <TD><input type="text" name="bankname" size="25" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ')"></TD>
+          </TR>
+          <TR>
+          <TD>Bank Branch</TD>
+          <TD><input type="text" maxlength="50" size="25" name="bankbranch" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+            </TR>
+          </table></TD></TR>
+          <TR>
+          <TD colspan="4">
+          <table border="1" style="width:100%">
+          <TR><TD colspan="6" bgcolor="#99aadd"><b>4. Detail of Registration of Service Tax/SalesTax/TIN/PAN</b></TD></TR>
+          <tr>
+          <td>Type of Taxes Registration</td>
+          <td>
+          <select name="taxtype">
+          <option value="-1">---</option>
+          <option value="GSTIN">GSTIN</option>
+        <!--  <option value="ST">SERVICE TAX</option>-->
+          <option value="SALES">SALES TAX</option><option value="TIN">TIN</option></select>
+          </td>
+          <td>No</td><td><input type="text" name="txtsrvno1" size="17" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+          
+          <td>Issue Date</td>
+          <td>
+          <input type="text" name="txttaxvalidfrom" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">DD/MM/YYYY
+          <input type="hidden" name="txttaxvalidto" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" value="01/01/2099" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+          </td>
+          </tr>
+          <tr>
+          <td>Issuing Authority</td>
+          <td>  <input type="text" name="txttaxauth" size="25" maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></td>
+          <td colspan="2"><input type="file" name="filetaxdocu"></td>
+          </tr>
+          
+           <tr>
+          <td>Service Tax Registration No</td><td><input type="text" name="txtstsrvno1" size="11" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+          
+          <td>Service Tax Registration Issue Date</td>
+          <td>
+          <input type="text" name="txtsttaxvalidfrom" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">DD/MM/YYYY
+          <input type="hidden" name="txtsttaxvalidto" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" value="01/01/2099" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+          </td>
+          </tr>
+          <tr>
+          <td>Service Tax Registration Issuing Authority</td>
+          <td>  <input type="text" name="txtsttaxauth" size="25" maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></td>
+          <td colspan="2"><input type="file" name="filesttaxdocu"></td>
+          </tr>
+          
+        <TR>
+          <TD colspan="2">PAN Card No(Attested Copy attached)</td>
+          <TD colspan="2"><input type="text" name="txtPAN" size="11" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')">
+          <input type="file" name="filepancrd">
+          </TD>
+        </TR>
+          </table>
+          </TD>
+          </TR>
+            
+        
+        <TR>
+        <td colspan="4">
+        <table width="100%" border="1">
+        <tr><td colspan="7" bgcolor="#99aadd"><b> 5.Annual turnover of the business of  last three years</b></td></tr>
+        <tr><td>Financial Year</td><td>Annual Turnover</td><td>CA Name</td><td>CA Address</td><td>Date Of Audit</td><td>CA Reg No</td><td>CA Email ID</td></tr>
+        <tr><td>
+            <input type="text" name="annualturnoveryr1" size="8" readOnly value="2017-18"  autocomplete="off">
+            </td><td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover1" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr1"></td>
+          <td><input type="text" name="caname1" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+          <td><input type="text" name="caaddress1" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+          <td><input type="text" name="caauditdt1" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+          <td><input type="text" name="caregno1" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+          <td><input type="text" name="caemailid1" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+        </tr>
+        <tr><td><input type="text" name="annualturnoveryr2" size="8" readOnly value="2016-17">(Optional)</td>
+            <td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover2" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr2"></td>
+          <td><input type="text" name="caname2" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+          <td><input type="text" name="caaddress2" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+          <td><input type="text" name="caauditdt2" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+          <td><input type="text" name="caregno2" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+          <td><input type="text" name="caemailid2" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+        </tr>
+        <tr><td><input type="text" name="annualturnoveryr3" size="8" readOnly value="2015-16">(Optional)</td>
+        <td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover3" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr3"></td>
+          <td><input type="text" name="caname3" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+          <td><input type="text" name="caaddress3" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+          <td><input type="text" name="caauditdt3" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+          <td><input type="text" name="caregno3" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+          <td><input type="text" name="caemailid3" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td></tr>
+        </table>
+        </td>
+          </TR>
+        <tr>
+        <td colspan="4">
+        <table border="1" width="100%">
+        <tr>
+        <td colspan="4" bgcolor="#99aadd"><b>6. Location of premises from where leasing work will be conducted(within office region)</b></td>
+        </tr>
+        <tr>
+        <td>Address</td>
+        <td><input type="text" name="propaddress" size="50" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+        </td>
+        <td>Area in sq mts</td>
+        <td><input type="text" maxlength="10" size="5" name="area_address" value="0" onKeyPress="return goodchars(event,'.0123456789')" onBlur="if(this.value=='') {this.value=0;}if(this.value=='.') {this.value=0;}" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+        
+        </tr>
+        <tr>
+        <td>Property Type</td>
+        <td><select name="property_type">
+        <option value="-1">---</option>
+        <option value="0">OWNED</option>
+        <option value="1">RENTED</option>
+        </select>
+        </td>
+        <td>
+        Photo&nbsp; <input type="file" name="filepropphoto">
+        </td>
+        <td> Rent Agreement/Ownership Document&nbsp; <input type="file" name="fileproptype"></td>
+        </tr>
+        <tr>
+        <td colspan="3">Whether Lease Holder Have facility of weighment of packages</td>
+        <td>
+          <select name="offwgmntmchnfclty">
+          <option value="-1">----</option>
+          <option value="0">NO</option>
+        <option value="1">YES</option>
+        
+          </select>
+          </td>
+        </tr>
+        </table>
+        </td>
+        </tr>
+        <tr>
+        <td style="width:100%" colspan="4">
+        <table style="width:100%" border="1">
+        <tr><td colspan="2" bgcolor="#99aadd"><b>7. Other Details</b></td>
+        </tr>
+        <tr><td>Applicant/Tenderer is already registered leaseholder in any Zonal Railway/Divisions</td><td>
+        <select name="appregothrrly">
+          <option value="-1">----</option>
+          <option value="0">NO</option>
+        <option value="1">YES</option>
+        
+          </select></tr>
+        <tr>
+        <td>If yes, please attach registration document </td>
+        <td><input type="file" name="fileothroffreg"></td>
+        </tr>
+        
+        <tr><td colspan="4" bgcolor="#76567a">Applicant/ Firm or any stake holder has been blacklisted by any division or zonal railway</td>
+        </tr>
+        
+        <tr><td>Whether registration has been cancelled by any zonal railway/division</td><td>
+        <select name="regstrncancldothrrly">
+          <option value="-1">----</option>
+          <option value="0">NO</option>
+        <option value="1">YES</option>
+        
+          </select></td></tr>
+        <tr><td>Whether you have been debarred for fresh registration by any division/zonal railway</td><td>
+        <select name="debaredfrshregothrrly">
+          <option value="-1">----</option>
+         <option value="0">NO</option>
+        <option value="1">YES</option>
+        
+          </select></td></tr>
+        <tr><td>Whether any punitive action has been taken by any of the zonal railway/division</td><td>
+        <select name="puntvactothrrly">
+          <option value="-1">----</option>
+         <option value="0">NO</option>
+        <option value="1">YES</option>
+        
+          </select></td></tr>
+        <tr><td>Whether any railway's dues are pending against them at any zonal railway/division</td><td><select name="rlyduepenothrrly">
+          <option value="-1">----</option>
+          <option value="0">NO</option>
+        <option value="1">YES</option>
+        
+          </select></td></tr>
+        </table>
+        </td>
+        </tr>
+        <tr>
+        <td style="width:100%" colspan="4">
+        <table style="width:100%" border="1">
+        <TR>
+          <TD COLSPAN="4"  bgcolor="#99aadd"><B>8. Person Authorised to deal with Railways</B></TD>
+        </TR>
+        <TR>
+          <TD colspan="4"><B>1)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname" type="text" id="contactpersonname" size=20 maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+        <!--  </TD>-->
+        <!--  <TD colspan="3">-->
+          Address&nbsp;<input name="contactpersonadd" type="text" id="contactpersonadd" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+          Mobile No&nbsp;<input name="contactpersonmob" type="text" id="contactpersonmob" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+          Photo&nbsp; <input type="file" name="filephotoauthper1">
+          </TD>
+        </TR>
+        
+        <TR>
+          <TD colspan="4"><B>2)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname1" type="text" id="contactpersonname1" size=20 maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+        <!--  </TD>-->
+        <!--  <TD colspan="3">-->
+          Address&nbsp;<input name="contactpersonadd1" type="text" id="contactpersonadd1" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+          Mobile No&nbsp;<input name="contactpersonmob1" type="text" id="contactpersonmob1" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+          Photo&nbsp; <input type="file" name="filephotoauthper2">
+          </TD>
+        </TR>
+        
+        <TR>
+          <TD colspan="4"><B>3)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname2" type="text" id="contactpersonname2" size=20 maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+        <!--  </TD>-->
+        <!--  <TD colspan="3">-->
+          Address&nbsp;<input name="contactpersonadd2" type="text" id="contactpersonadd2" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+          Mobile No&nbsp;<input name="contactpersonmob2" type="text" id="contactpersonmob2" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+          Photo&nbsp; <input type="file" name="filephotoauthper3">
+          </TD>
+        </TR>
+        </table></td></tr>
+          <TR><TD COLSPAN=4 ALIGN="CENTER">
+         <img src="../Captcha.jpg" border="0" name="imgcaptcha">
+         <input type="button" value="Refresh Captcha" onClick="window.document.frmcustomer.imgcaptcha.src='';window.document.frmcustomer.imgcaptcha.src='../Captcha.jpg?random='+new Date().getTime();">
+         <input type='text' name='jcaptcha' value='' maxlength="8">
+        </TD></TR>
+        <TR><TD colspan="4" align="center" bgcolor="#99bbee">
+        <input type="button" value="Submit" name="btnSbmt" onClick="return validate()">
+        <input type="button" value="Exit" name="btnExit" onClick="document.location.href='www.parcel.indianrail.gov.in'">
+        </TD>
+        </TR>
+        </TABLE>
+        </FORM>
+        Note: File Attachment limit is 5MB, Allowed files to be uploaded is PDF and JPG
+        <BR>
+        Disclaimer:
+        <ul>
+            <li>If any information/declaration made by the Applicant/Lease Holder is found false at any stage before or after award of contract or deliberately defraud with the railways, his/her registration will be cancelled and registration fee will be forfeited. In addition to forfeiture of registration fee, all his existing leasing contracts being operated from that division would also be cancelled.</li>
+            <li>Applicant are required to submit print of this registration form along self attested documents (attached to the form) to the concerned divisional/zonal office. Registration will deemed to have been done after acceptence by the competant authority subject to verification of documents</li>
+            <li>The future correspondence will be made through fax or email also, the responsibility of receiving/opening of mail lies with the Applicant/Lease Holder</li>
+        </ul>
+        </BODY>
+        <script> 
+        var myvar= window.setInterval(function () {incrementClock();}, 1800000);
+        </script>
+        </HTML>
+<HTML><HEAD>
+
+
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="expires" content="0"/>
+<meta http-equiv="cache-control" content="no-cache"/>
+
+<TITLE>Customer Profile</TITLE></HEAD>
+<script language="JavaScript" src="./js/validateDate.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="./js/custprofile1.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="./js/common.js" type="text/JavaScript"></script>
+<script>
+function datefrmt(dId,mId,yId,tId){
+var dObj = document.getElementById(dId);
+var mObj = document.getElementById(mId);
+var yObj = document.getElementById(yId);
+var tObj = document.getElementById(tId);
+if(isDate(dObj.value+'/'+mObj.value+'/'+yObj.value)){
+tObj.value = dObj.value+'/'+mObj.value+'/'+yObj.value;return true;
+}else{
+strDt = (tObj.value).split('/');
+dObj.value = strDt[0];
+mObj.value = strDt[1];
+yObj.value = strDt[2];
+return false;
+}
+}
+
+function datefrmt_lessthantoday(dId,mId,yId,tId){
+var dObj = document.getElementById(dId);
+var mObj = document.getElementById(mId);
+var yObj = document.getElementById(yId);
+var tObj = document.getElementById(tId);
+var today = new Date(2019,5,17,0,0,0);
+if(isDate(dObj.value+'/'+mObj.value+'/'+yObj.value)){
+var date1 = new Date(yObj.value,parseFloat(mObj.value)-1,dObj.value,0,0,0);
+if(date1>today){
+strDt = (tObj.value).split('/');
+dObj.value = strDt[0];
+mObj.value = strDt[1];
+yObj.value = strDt[2];
+return false;
+}else{
+tObj.value = dObj.value+'/'+mObj.value+'/'+yObj.value;return true;
+}}else{
+strDt = (tObj.value).split('/');
+dObj.value = strDt[0];
+mObj.value = strDt[1];
+yObj.value = strDt[2];
+return false;
+}
+}
+
+
+function incrementClock()
+{
+	window.document.frmcustomer.imgcaptcha.src='';window.document.frmcustomer.imgcaptcha.src='../Captcha.jpg?random='+new Date().getTime();
+}
+
+function toggleoffice(opt)
+{
+	if(opt==1)
+	{
+		window.document.frmcustomer.division.value='-1';
+		window.document.frmcustomer.division.disabled=true;
+		window.document.frmcustomer.zone.disabled=false;
+		//window.document.getElementById('td_1').style.backgroundColor = "#aaccff";
+		window.document.getElementById('td_2').style.backgroundColor = "#aaccff";
+		//window.document.getElementById('td_3').style.backgroundColor = "#dedede";
+		window.document.getElementById('td_4').style.backgroundColor = "#dedede";
+	}
+	
+	if(opt==2)
+	{
+		window.document.frmcustomer.zone.value='-1';
+		window.document.frmcustomer.zone.disabled=true;
+		window.document.frmcustomer.division.disabled=false;
+		//window.document.getElementById('td_1').style.backgroundColor = "#dedede";
+		window.document.getElementById('td_2').style.backgroundColor = "#dedede";
+		//window.document.getElementById('td_3').style.backgroundColor = "#aaccff";
+		window.document.getElementById('td_4').style.backgroundColor = "#aaccff";
+	}
+}
+</script>
+<BODY bgcolor="#ffffff">
+<FORM name="frmcustomer" method="post" action="../webreglh" onSubmit="return false" enctype="multipart/form-data">
+<TABLE align="center" border="1" bgcolor="#aaccff">
+<TR>
+<TD  bgcolor="#aabbee" colspan=4 align="center"><b>Lease Holder Web Registration</b></TD></TR>
+<TR>
+<TD colspan="4">
+<table width="100%" border="1">
+<tr>
+<td colspan="6" bgcolor="#99aadd"><b>1. Please Select The Office You want to Register and Registration Category</b>(<font color="#e305e7">Please select either zone or division where you want to register yourself</font>)</td>
+</tr>
+<tr>
+<td id="td_1">
+<input type="radio" name="regtype" value="1" onClick="toggleoffice(1)"> Zone
+</td>
+<td id="td_2" style="background-color: #dedede">Zone Code <select NAME="zone" disabled>
+<option value="-1">--Select Registration Railway--</option>
+				 <option value ="0">
+0-KONKAN RAIL CORP     
+ </option>
+ <option value ="1">
+1-CENTRAL              
+ </option>
+ <option value ="10">
+10-EAST-CENTRAL         
+ </option>
+ <option value ="11">
+11-NORTH WESTERN        
+ </option>
+ <option value ="12">
+12-EAST COAST RAILWAY   
+ </option>
+ <option value ="13">
+13-NORTH-CENTRAL        
+ </option>
+ <option value ="14">
+14-SOUTH-EAST-CENTRAL   
+ </option>
+ <option value ="15">
+15-SOUTH-WEST RAILWAYS  
+ </option>
+ <option value ="16">
+16-WEST-CENTRAL         
+ </option>
+ <option value ="2">
+2-EASTERN              
+ </option>
+ <option value ="3">
+3-NORTHERN             
+ </option>
+ <option value ="4">
+4-NORTH-EASTERN        
+ </option>
+ <option value ="5">
+5-NORTH-EAST-FRONTIER  
+ </option>
+ <option value ="6">
+6-SOUTHERN             
+ </option>
+ <option value ="7">
+7-SOUTH-EASTERN        
+ </option>
+ <option value ="8">
+8-WESTERN              
+ </option>
+ <option value ="9">
+9-SOUTH-CENTRAL        
+ </option>
+
+			</select></td>
+<td id="td_3"><input type="radio" name="regtype" value="0" onClick="toggleoffice(2)" checked> Division</td>
+<td id="td_4">
+Division Code:<select NAME="division">
+<option value="-1">--Select Registration Division(If Applicable)--</option>
+				 <option value ="ADI">
+ADI-AHMADABAD            
+ </option>
+ <option value ="ADRA">
+ADRA-ADRA                
+ </option>
+ <option value ="AGRA">
+AGRA-AGRA               
+ </option>
+ <option value ="AII">
+AII -AJMER               
+ </option>
+ <option value ="ALD">
+ALD-ALLAHABAD
+ </option>
+ <option value ="APDJ">
+APDJ-ALIPUR DUAR         
+ </option>
+ <option value ="ASN">
+ASN -ASANSOL             
+ </option>
+ <option value ="BKN">
+BKN-BIKANER
+ </option>
+ <option value ="BPL">
+BPL-BHOPAL               
+ </option>
+ <option value ="BRC">
+BRC -VADODRA             
+ </option>
+ <option value ="BSB">
+BSB -VARANASI            
+ </option>
+ <option value ="BSL">
+BSL -BHUSAVAL            
+ </option>
+ <option value ="BSP">
+BSP-BILASPUR
+ </option>
+ <option value ="BVC">
+BVC -BHAVNAGAR           
+ </option>
+ <option value ="BZA">
+BZA -VIJAYAWADA          
+ </option>
+ <option value ="CKP">
+CKP -CHAKRADHARPUR       
+ </option>
+ <option value ="CRIS">
+CRIS-CRIS
+ </option>
+ <option value ="CSTM">
+CSTM-MUMBAI              
+ </option>
+ <option value ="DHN">
+DHN -DHANBAD             
+ </option>
+ <option value ="DLI">
+DLI -DELHI               
+ </option>
+ <option value ="DNR">
+DNR -DANAPUR             
+ </option>
+ <option value ="FZR">
+FZR -FIROZPUR            
+ </option>
+ <option value ="GNT">
+GNT-GUNTUR               
+ </option>
+ <option value ="GTL">
+GTL -GUNTAKAL            
+ </option>
+ <option value ="HWH">
+HWH -HOWRAH              
+ </option>
+ <option value ="HYB">
+HYB -HYDERABAD           
+ </option>
+ <option value ="IZN">
+IZN -IZZATNAGAR          
+ </option>
+ <option value ="JBP">
+JBP -JABALPUR            
+ </option>
+ <option value ="JHS">
+JHS -JHANSI              
+ </option>
+ <option value ="JP">
+JP  -JAIPUR              
+ </option>
+ <option value ="JU">
+JU  -JODHPUR             
+ </option>
+ <option value ="KAWR">
+UBL -KARWAR              
+ </option>
+ <option value ="KGP">
+KGP -KHARAGPUR           
+ </option>
+ <option value ="KIR">
+KIR-KATIHAR              
+ </option>
+ <option value ="KOTA">
+KOTA-KOTA                
+ </option>
+ <option value ="KUR">
+KUR -KHURDA ROAD         
+ </option>
+ <option value ="LJN">
+LJN -LUCKNOW             
+ </option>
+ <option value ="LKO">
+LKO -LUCKNOW             
+ </option>
+ <option value ="LMG">
+LMG -LUMDING             
+ </option>
+ <option value ="MAS">
+MAS -MADRAS              
+ </option>
+ <option value ="MB">
+MB  -MORADABAD           
+ </option>
+ <option value ="MCC">
+MCC -BOMBAY CENTRAL      
+ </option>
+ <option value ="MDU">
+MDU -MADURAI             
+ </option>
+ <option value ="MGS">
+MGS-MUGALSARAI           
+ </option>
+ <option value ="MLDT">
+MLDT-MALDA               
+ </option>
+ <option value ="MYS">
+MYS -MYSORE              
+ </option>
+ <option value ="NAG">
+NAG-NAGPUR(N.G)          
+ </option>
+ <option value ="NED">
+NED-NANDED               
+ </option>
+ <option value ="NGP">
+NGP -NAGPUR(B.G)         
+ </option>
+ <option value ="PGT">
+PGT -PALGHAT             
+ </option>
+ <option value ="PR">
+PR-PAK RAILWAY
+ </option>
+ <option value ="PUNE">
+PUNE-PUNE                
+ </option>
+ <option value ="R">
+R-RAIPUR                 
+ </option>
+ <option value ="RJT">
+RJT -RAJKOT              
+ </option>
+ <option value ="RN">
+UBL -RATNAGIRI           
+ </option>
+ <option value ="RNC">
+RNC-RANCHI               
+ </option>
+ <option value ="RNY">
+RNY-RANGIYA              
+ </option>
+ <option value ="RTM">
+RTM -RATLAM              
+ </option>
+ <option value ="SA">
+SA-SALEM
+ </option>
+ <option value ="SBC">
+SBC -BANGALORE           
+ </option>
+ <option value ="SBP">
+SBP-SAMBALPUR            
+ </option>
+ <option value ="SC">
+SC  -SECUNDRABAD         
+ </option>
+ <option value ="SDAH">
+SDAH-SEALDAH             
+ </option>
+ <option value ="SEE">
+SEE -SONPUR              
+ </option>
+ <option value ="SPJ">
+SPJ -SAMASTIPUR          
+ </option>
+ <option value ="SUR">
+SUR -SOLAPUR             
+ </option>
+ <option value ="TPJ">
+TPJ -TIRUCHIRAPALLI      
+ </option>
+ <option value ="TSK">
+TSK -TINSUKIA            
+ </option>
+ <option value ="TVC">
+TVC -TRIVANDRUM          
+ </option>
+ <option value ="UBL">
+UBL -HUBLI               
+ </option>
+ <option value ="UMB">
+UMB-AMBALA CANTT         
+ </option>
+ <option value ="WAT">
+WAT -WALTAIR             
+ </option>
+</select>
+</td>
+
+<TD><b>Registration Category <font color="RED">*</font></b>
+<select name="regcategory">  <option value="1">A</option>
+<option value="2">B</option>
+<option value="3">C</option>
+
+</select></TD>
+</tr>
+</table>
+</TD>
+</TR>
+<TR>
+<TD colspan="4">
+<table width="100%" border="1">
+<TR><TD colspan="6" bgcolor="#99aadd"><b>2. Nature of the Lease Holder</b></TD></TR>
+<TR>
+<TD>Type</td><td>
+<select name="nature" onchange="notBlank_chkInd(frmcustomer.firmname);notBlank_chkInd(frmcustomer.address);toggleNature();">
+<option value="0">INDIVIDUAL</option>
+<option value="1">FIRM</option>
+<option value="2">COMPANY</option>
+<option value="3">SOCIETY</option>
+<option value="5">JOINT VENTURE</option>
+
+</select></td>
+<td>Current Business Profile:</td>
+ <TD><input type="text" size="20" maxlength="50" name="business_profile" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;" autocomplete="off" onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')"></td>
+ <td>Partnership firm:</td>
+ <td>
+  <select name="partnership_firm">
+  <option value="-1">---</option>
+  <option value="0">NO</option>
+<option value="1">YES</option>
+</select>
+  <input type="file" name="filepatnerdoc">
+</TD>
+</TR>
+</table></TD></TR>
+<TR>
+<TD colspan="4">
+<table width="100%" border="1">
+<TR><TD colspan="6" bgcolor="#99aadd"><b>3. Detail of the applicant</b></TD></TR>
+<TR>
+  <TD>Applicant Name - Address<FONT color="RED">*</FONT></TD>
+<TD colspan="3">
+<input name="name" type="text" size="20" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank(this);toggleAppName()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+-
+<input type="text" maxlength="200" size="55" name="applicant_address" onChange="this.value = (this.value).toUpperCase();toggleAppAddress()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')">
+Photo&nbsp; <input type="file" name="filephotoapp">
+</TD>
+<!--<TD></TD>-->
+</TR>
+<TR>
+<TD>Address proof type</TD>
+<TD>
+<select name="addressproftype">
+<option value="-1">--Select Address Proof</option>
+<option value="1">Latest Electricity bill</option>
+<option value="10">Unique Identification Card Aadhaar</option>
+<option value="2">Latest Telephone(Landline or Postpaid connection) bill</option>
+<option value="3">Latest Bank account statement/bank pass book</option>
+<option value="4">Passport</option>
+<option value="5">Voters Identity card</option>
+<option value="6">Property tax assessment order</option>
+<option value="7">Driving License</option>
+<option value="8">Ration card</option>
+<option value="9">Address as in Latest ITR</option>
+
+</select>
+</TD>
+<TD>Address proof document</TD><TD><input type="file" name="fileadrsprfdocu"></TD>
+</TR>
+<TR>
+<TD>Photo ID proof type</TD>
+<TD colspan="3">
+<select name="photoidproftype">
+<option value="-1">--Select Photo ID Proof</option>
+<option value="1">Voter Photo identity card issued by Election Commision of India</option>
+<option value="2">Passport</option>
+<option value="3">PAN Card issued by Income Tax Department.</option>
+<option value="4">Driving Licence issued by RTO</option>
+<option value="5">Nationalized Bank Passbok with photograph</option>
+<option value="6">Credit cards issued by banks with laminated photograph</option>
+<option value="7">Unique Identification Card Aadhaar</option>
+<option value="8">Photo identity cards having serial number issued by Public Sector Undertaking of State/Central Government, District Administration, Municipal bodies and Panchayat Administration</option>
+
+</select>
+</TD>
+</tr>
+<tr>
+<TD>Photo ID document</TD><TD><input type="file" name="filephtoidprfdocu"></TD>
+</TR>
+<TR><TD colspan="3" class="style1">Telephone No - Off :<input name="tele_off" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+<!--</TD><TD colspan="3">-->
+Resi. :
+<input name="tele_res" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+Mobile :
+<input name="tele_mob" type="text" size="11" maxlength="10" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+Fax :
+<input name="tele_fax" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+</TD>
+<TD class="style1"><B>Email</B>
+<!--</TD><TD>-->
+<input name="emailid" type="text" size="30" maxlength="50" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@-_=+[]{}\|./')">
+ </TD>
+  </TR>
+<TR>
+  <TD colspan="4">Firm's/ Company's/ Society's Name<FONT color="RED">*</FONT>
+<!--  </TD>-->
+<!--  <TD>-->
+  <input name="firmname" type="text" id="firmname2" size="55" readOnly class="ReadOnlyObj" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank_chkInd(this)" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+  </TR>
+<TR>
+  <TD colspan="4">Firm's/ Company's/ Society's Address<FONT color="RED">*</FONT>
+<!--  </TD><TD colspan="3">-->
+<input name="address" type="text" size=80 maxlength="75" readOnly class="ReadOnlyObj" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank_chkInd(this)" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')">
+</TD>
+</TR>
+<TR>
+      <td colspan="4" bgcolor="#76567a">Details of Registration of Firm/Company/Society</TD>
+  </TR>
+  <TR>
+  <TD>Certificate No</TD>
+  <TD><input type="text" maxlength="50" size="25" name="registration_dtls" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+  <TD>Issuing Authority</TD>
+  <TD><input type="text" name="txtissuauth" size="25" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+  </TR>
+  <TR>
+  <TD>Issue Date</TD>
+  <td>
+  <input type="text" name="txtregissuedt" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">&nbsp;DD/MM/YYYY
+  </td>
+  <td colspan="2"><input type="file" name="fileregsdtl"></td>
+  </TR>
+  <TR>
+      <td colspan="4" bgcolor="#76567a">Bank Account Details</TD>
+  </TR>
+  <TR>
+  <TD>Account No</TD>
+  <TD><input type="text" maxlength="25" size="25" name="bankaccntdtls" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+  <TD>IFSC Code</TD>
+  <TD><input type="text" name="bankifsccode" size="20" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+  </TR>
+  <TR>
+  <TD>MICR No.</TD>
+  <TD><input type="text" maxlength="50" size="25" name="bankmicr" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+  <TD>Bank</TD>
+  <TD><input type="text" name="bankname" size="25" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ')"></TD>
+  </TR>
+  <TR>
+  <TD>Bank Branch</TD>
+  <TD><input type="text" maxlength="50" size="25" name="bankbranch" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+    </TR>
+  </table></TD></TR>
+  <TR>
+  <TD colspan="4">
+  <table border="1" style="width:100%">
+  <TR><TD colspan="6" bgcolor="#99aadd"><b>4. Detail of Registration of Service Tax/SalesTax/TIN/PAN</b></TD></TR>
+  <tr>
+  <td>Type of Taxes Registration</td>
+  <td>
+  <select name="taxtype">
+  <option value="-1">---</option>
+  <option value="GSTIN">GSTIN</option>
+<!--  <option value="ST">SERVICE TAX</option>-->
+  <option value="SALES">SALES TAX</option><option value="TIN">TIN</option></select>
+  </td>
+  <td>No</td><td><input type="text" name="txtsrvno1" size="17" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  
+  <td>Issue Date</td>
+  <td>
+  <input type="text" name="txttaxvalidfrom" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">DD/MM/YYYY
+  <input type="hidden" name="txttaxvalidto" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" value="01/01/2099" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+  </td>
+  </tr>
+  <tr>
+  <td>Issuing Authority</td>
+  <td>  <input type="text" name="txttaxauth" size="25" maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></td>
+  <td colspan="2"><input type="file" name="filetaxdocu"></td>
+  </tr>
+  
+   <tr>
+  <td>Service Tax Registration No</td><td><input type="text" name="txtstsrvno1" size="11" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  
+  <td>Service Tax Registration Issue Date</td>
+  <td>
+  <input type="text" name="txtsttaxvalidfrom" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">DD/MM/YYYY
+  <input type="hidden" name="txtsttaxvalidto" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" value="01/01/2099" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+  </td>
+  </tr>
+  <tr>
+  <td>Service Tax Registration Issuing Authority</td>
+  <td>  <input type="text" name="txtsttaxauth" size="25" maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></td>
+  <td colspan="2"><input type="file" name="filesttaxdocu"></td>
+  </tr>
+  
+<TR>
+  <TD colspan="2">PAN Card No(Attested Copy attached)</td>
+  <TD colspan="2"><input type="text" name="txtPAN" size="11" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')">
+  <input type="file" name="filepancrd">
+  </TD>
+</TR>
+  </table>
+  </TD>
+  </TR>
+    
+
+<TR>
+<td colspan="4">
+<table width="100%" border="1">
+<tr><td colspan="7" bgcolor="#99aadd"><b> 5.Annual turnover of the business of  last three years</b></td></tr>
+<tr><td>Financial Year</td><td>Annual Turnover</td><td>CA Name</td><td>CA Address</td><td>Date Of Audit</td><td>CA Reg No</td><td>CA Email ID</td></tr>
+<tr><td>
+	<input type="text" name="annualturnoveryr1" size="8" readOnly value="2017-18"  autocomplete="off">
+	</td><td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover1" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr1"></td>
+  <td><input type="text" name="caname1" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caaddress1" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caauditdt1" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+  <td><input type="text" name="caregno1" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+  <td><input type="text" name="caemailid1" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+</tr>
+<tr><td><input type="text" name="annualturnoveryr2" size="8" readOnly value="2016-17">(Optional)</td>
+	<td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover2" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr2"></td>
+  <td><input type="text" name="caname2" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caaddress2" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caauditdt2" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+  <td><input type="text" name="caregno2" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+  <td><input type="text" name="caemailid2" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+</tr>
+<tr><td><input type="text" name="annualturnoveryr3" size="8" readOnly value="2015-16">(Optional)</td>
+<td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover3" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr3"></td>
+  <td><input type="text" name="caname3" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caaddress3" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caauditdt3" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+  <td><input type="text" name="caregno3" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+  <td><input type="text" name="caemailid3" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td></tr>
+</table>
+</td>
+  </TR>
+<tr>
+<td colspan="4">
+<table border="1" width="100%">
+<tr>
+<td colspan="4" bgcolor="#99aadd"><b>6. Location of premises from where leasing work will be conducted(within office region)</b></td>
+</tr>
+<tr>
+<td>Address</td>
+<td><input type="text" name="propaddress" size="50" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+</td>
+<td>Area in sq mts</td>
+<td><input type="text" maxlength="10" size="5" name="area_address" value="0" onKeyPress="return goodchars(event,'.0123456789')" onBlur="if(this.value=='') {this.value=0;}if(this.value=='.') {this.value=0;}" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+
+</tr>
+<tr>
+<td>Property Type</td>
+<td><select name="property_type">
+<option value="-1">---</option>
+<option value="0">OWNED</option>
+<option value="1">RENTED</option>
+</select>
+</td>
+<td>
+Photo&nbsp; <input type="file" name="filepropphoto">
+</td>
+<td> Rent Agreement/Ownership Document&nbsp; <input type="file" name="fileproptype"></td>
+</tr>
+<tr>
+<td colspan="3">Whether Lease Holder Have facility of weighment of packages</td>
+<td>
+  <select name="offwgmntmchnfclty">
+  <option value="-1">----</option>
+  <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select>
+  </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="width:100%" colspan="4">
+<table style="width:100%" border="1">
+<tr><td colspan="2" bgcolor="#99aadd"><b>7. Other Details</b></td>
+</tr>
+<tr><td>Applicant/Tenderer is already registered leaseholder in any Zonal Railway/Divisions</td><td>
+<select name="appregothrrly">
+  <option value="-1">----</option>
+  <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select></tr>
+<tr>
+<td>If yes, please attach registration document </td>
+<td><input type="file" name="fileothroffreg"></td>
+</tr>
+
+<tr><td colspan="4" bgcolor="#76567a">Applicant/ Firm or any stake holder has been blacklisted by any division or zonal railway</td>
+</tr>
+
+<tr><td>Whether registration has been cancelled by any zonal railway/division</td><td>
+<select name="regstrncancldothrrly">
+  <option value="-1">----</option>
+  <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select></td></tr>
+<tr><td>Whether you have been debarred for fresh registration by any division/zonal railway</td><td>
+<select name="debaredfrshregothrrly">
+  <option value="-1">----</option>
+ <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select></td></tr>
+<tr><td>Whether any punitive action has been taken by any of the zonal railway/division</td><td>
+<select name="puntvactothrrly">
+  <option value="-1">----</option>
+ <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select></td></tr>
+<tr><td>Whether any railway's dues are pending against them at any zonal railway/division</td><td><select name="rlyduepenothrrly">
+  <option value="-1">----</option>
+  <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select></td></tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="width:100%" colspan="4">
+<table style="width:100%" border="1">
+<TR>
+  <TD COLSPAN="4"  bgcolor="#99aadd"><B>8. Person Authorised to deal with Railways</B></TD>
+</TR>
+<TR>
+  <TD colspan="4"><B>1)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname" type="text" id="contactpersonname" size=20 maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+<!--  </TD>-->
+<!--  <TD colspan="3">-->
+  Address&nbsp;<input name="contactpersonadd" type="text" id="contactpersonadd" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+  Mobile No&nbsp;<input name="contactpersonmob" type="text" id="contactpersonmob" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+  Photo&nbsp; <input type="file" name="filephotoauthper1">
+  </TD>
+</TR>
+
+<TR>
+  <TD colspan="4"><B>2)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname1" type="text" id="contactpersonname1" size=20 maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+<!--  </TD>-->
+<!--  <TD colspan="3">-->
+  Address&nbsp;<input name="contactpersonadd1" type="text" id="contactpersonadd1" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+  Mobile No&nbsp;<input name="contactpersonmob1" type="text" id="contactpersonmob1" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+  Photo&nbsp; <input type="file" name="filephotoauthper2">
+  </TD>
+</TR>
+
+<TR>
+  <TD colspan="4"><B>3)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname2" type="text" id="contactpersonname2" size=20 maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+<!--  </TD>-->
+<!--  <TD colspan="3">-->
+  Address&nbsp;<input name="contactpersonadd2" type="text" id="contactpersonadd2" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+  Mobile No&nbsp;<input name="contactpersonmob2" type="text" id="contactpersonmob2" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+  Photo&nbsp; <input type="file" name="filephotoauthper3">
+  </TD>
+</TR>
+</table></td></tr>
+  <TR><TD COLSPAN=4 ALIGN="CENTER">
+ <img src="../Captcha.jpg" border="0" name="imgcaptcha">
+ <input type="button" value="Refresh Captcha" onClick="window.document.frmcustomer.imgcaptcha.src='';window.document.frmcustomer.imgcaptcha.src='../Captcha.jpg?random='+new Date().getTime();">
+ <input type='text' name='jcaptcha' value='' maxlength="8">
+</TD></TR>
+<TR><TD colspan="4" align="center" bgcolor="#99bbee">
+<input type="button" value="Submit" name="btnSbmt" onClick="return validate()">
+<input type="button" value="Exit" name="btnExit" onClick="document.location.href='www.parcel.indianrail.gov.in'">
+</TD>
+</TR>
+</TABLE>
+</FORM>
+Note: File Attachment limit is 5MB, Allowed files to be uploaded is PDF and JPG
+<BR>
+Disclaimer:
+<ul>
+	<li>If any information/declaration made by the Applicant/Lease Holder is found false at any stage before or after award of contract or deliberately defraud with the railways, his/her registration will be cancelled and registration fee will be forfeited. In addition to forfeiture of registration fee, all his existing leasing contracts being operated from that division would also be cancelled.</li>
+	<li>Applicant are required to submit print of this registration form along self attested documents (attached to the form) to the concerned divisional/zonal office. Registration will deemed to have been done after acceptence by the competant authority subject to verification of documents</li>
+	<li>The future correspondence will be made through fax or email also, the responsibility of receiving/opening of mail lies with the Applicant/Lease Holder</li>
+</ul>
+</BODY>
+<script> 
+var myvar= window.setInterval(function () {incrementClock();}, 1800000);
+</script>
+</HTML>
+<HTML><HEAD>
+
+
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="expires" content="0"/>
+<meta http-equiv="cache-control" content="no-cache"/>
+
+<TITLE>Customer Profile</TITLE></HEAD>
+<script language="JavaScript" src="./js/validateDate.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="./js/custprofile1.js" type="text/JavaScript"></script>
+<script language="JavaScript" src="./js/common.js" type="text/JavaScript"></script>
+<script>
+function datefrmt(dId,mId,yId,tId){
+var dObj = document.getElementById(dId);
+var mObj = document.getElementById(mId);
+var yObj = document.getElementById(yId);
+var tObj = document.getElementById(tId);
+if(isDate(dObj.value+'/'+mObj.value+'/'+yObj.value)){
+tObj.value = dObj.value+'/'+mObj.value+'/'+yObj.value;return true;
+}else{
+strDt = (tObj.value).split('/');
+dObj.value = strDt[0];
+mObj.value = strDt[1];
+yObj.value = strDt[2];
+return false;
+}
+}
+
+function datefrmt_lessthantoday(dId,mId,yId,tId){
+var dObj = document.getElementById(dId);
+var mObj = document.getElementById(mId);
+var yObj = document.getElementById(yId);
+var tObj = document.getElementById(tId);
+var today = new Date(2019,5,17,0,0,0);
+if(isDate(dObj.value+'/'+mObj.value+'/'+yObj.value)){
+var date1 = new Date(yObj.value,parseFloat(mObj.value)-1,dObj.value,0,0,0);
+if(date1>today){
+strDt = (tObj.value).split('/');
+dObj.value = strDt[0];
+mObj.value = strDt[1];
+yObj.value = strDt[2];
+return false;
+}else{
+tObj.value = dObj.value+'/'+mObj.value+'/'+yObj.value;return true;
+}}else{
+strDt = (tObj.value).split('/');
+dObj.value = strDt[0];
+mObj.value = strDt[1];
+yObj.value = strDt[2];
+return false;
+}
+}
+
+
+function incrementClock()
+{
+	window.document.frmcustomer.imgcaptcha.src='';window.document.frmcustomer.imgcaptcha.src='../Captcha.jpg?random='+new Date().getTime();
+}
+
+function toggleoffice(opt)
+{
+	if(opt==1)
+	{
+		window.document.frmcustomer.division.value='-1';
+		window.document.frmcustomer.division.disabled=true;
+		window.document.frmcustomer.zone.disabled=false;
+		//window.document.getElementById('td_1').style.backgroundColor = "#aaccff";
+		window.document.getElementById('td_2').style.backgroundColor = "#aaccff";
+		//window.document.getElementById('td_3').style.backgroundColor = "#dedede";
+		window.document.getElementById('td_4').style.backgroundColor = "#dedede";
+	}
+	
+	if(opt==2)
+	{
+		window.document.frmcustomer.zone.value='-1';
+		window.document.frmcustomer.zone.disabled=true;
+		window.document.frmcustomer.division.disabled=false;
+		//window.document.getElementById('td_1').style.backgroundColor = "#dedede";
+		window.document.getElementById('td_2').style.backgroundColor = "#dedede";
+		//window.document.getElementById('td_3').style.backgroundColor = "#aaccff";
+		window.document.getElementById('td_4').style.backgroundColor = "#aaccff";
+	}
+}
+</script>
+<BODY bgcolor="#ffffff">
+<FORM name="frmcustomer" method="post" action="../webreglh" onSubmit="return false" enctype="multipart/form-data">
+<TABLE align="center" border="1" bgcolor="#aaccff">
+<TR>
+<TD  bgcolor="#aabbee" colspan=4 align="center"><b>Lease Holder Web Registration</b></TD></TR>
+<TR>
+<TD colspan="4">
+<table width="100%" border="1">
+<tr>
+<td colspan="6" bgcolor="#99aadd"><b>1. Please Select The Office You want to Register and Registration Category</b>(<font color="#e305e7">Please select either zone or division where you want to register yourself</font>)</td>
+</tr>
+<tr>
+<td id="td_1">
+<input type="radio" name="regtype" value="1" onClick="toggleoffice(1)"> Zone
+</td>
+<td id="td_2" style="background-color: #dedede">Zone Code <select NAME="zone" disabled>
+<option value="-1">--Select Registration Railway--</option>
+				 <option value ="0">
+0-KONKAN RAIL CORP     
+ </option>
+ <option value ="1">
+1-CENTRAL              
+ </option>
+ <option value ="10">
+10-EAST-CENTRAL         
+ </option>
+ <option value ="11">
+11-NORTH WESTERN        
+ </option>
+ <option value ="12">
+12-EAST COAST RAILWAY   
+ </option>
+ <option value ="13">
+13-NORTH-CENTRAL        
+ </option>
+ <option value ="14">
+14-SOUTH-EAST-CENTRAL   
+ </option>
+ <option value ="15">
+15-SOUTH-WEST RAILWAYS  
+ </option>
+ <option value ="16">
+16-WEST-CENTRAL         
+ </option>
+ <option value ="2">
+2-EASTERN              
+ </option>
+ <option value ="3">
+3-NORTHERN             
+ </option>
+ <option value ="4">
+4-NORTH-EASTERN        
+ </option>
+ <option value ="5">
+5-NORTH-EAST-FRONTIER  
+ </option>
+ <option value ="6">
+6-SOUTHERN             
+ </option>
+ <option value ="7">
+7-SOUTH-EASTERN        
+ </option>
+ <option value ="8">
+8-WESTERN              
+ </option>
+ <option value ="9">
+9-SOUTH-CENTRAL        
+ </option>
+
+			</select></td>
+<td id="td_3"><input type="radio" name="regtype" value="0" onClick="toggleoffice(2)" checked> Division</td>
+<td id="td_4">
+Division Code:<select NAME="division">
+<option value="-1">--Select Registration Division(If Applicable)--</option>
+				 <option value ="ADI">
+ADI-AHMADABAD            
+ </option>
+ <option value ="ADRA">
+ADRA-ADRA                
+ </option>
+ <option value ="AGRA">
+AGRA-AGRA               
+ </option>
+ <option value ="AII">
+AII -AJMER               
+ </option>
+ <option value ="ALD">
+ALD-ALLAHABAD
+ </option>
+ <option value ="APDJ">
+APDJ-ALIPUR DUAR         
+ </option>
+ <option value ="ASN">
+ASN -ASANSOL             
+ </option>
+ <option value ="BKN">
+BKN-BIKANER
+ </option>
+ <option value ="BPL">
+BPL-BHOPAL               
+ </option>
+ <option value ="BRC">
+BRC -VADODRA             
+ </option>
+ <option value ="BSB">
+BSB -VARANASI            
+ </option>
+ <option value ="BSL">
+BSL -BHUSAVAL            
+ </option>
+ <option value ="BSP">
+BSP-BILASPUR
+ </option>
+ <option value ="BVC">
+BVC -BHAVNAGAR           
+ </option>
+ <option value ="BZA">
+BZA -VIJAYAWADA          
+ </option>
+ <option value ="CKP">
+CKP -CHAKRADHARPUR       
+ </option>
+ <option value ="CRIS">
+CRIS-CRIS
+ </option>
+ <option value ="CSTM">
+CSTM-MUMBAI              
+ </option>
+ <option value ="DHN">
+DHN -DHANBAD             
+ </option>
+ <option value ="DLI">
+DLI -DELHI               
+ </option>
+ <option value ="DNR">
+DNR -DANAPUR             
+ </option>
+ <option value ="FZR">
+FZR -FIROZPUR            
+ </option>
+ <option value ="GNT">
+GNT-GUNTUR               
+ </option>
+ <option value ="GTL">
+GTL -GUNTAKAL            
+ </option>
+ <option value ="HWH">
+HWH -HOWRAH              
+ </option>
+ <option value ="HYB">
+HYB -HYDERABAD           
+ </option>
+ <option value ="IZN">
+IZN -IZZATNAGAR          
+ </option>
+ <option value ="JBP">
+JBP -JABALPUR            
+ </option>
+ <option value ="JHS">
+JHS -JHANSI              
+ </option>
+ <option value ="JP">
+JP  -JAIPUR              
+ </option>
+ <option value ="JU">
+JU  -JODHPUR             
+ </option>
+ <option value ="KAWR">
+UBL -KARWAR              
+ </option>
+ <option value ="KGP">
+KGP -KHARAGPUR           
+ </option>
+ <option value ="KIR">
+KIR-KATIHAR              
+ </option>
+ <option value ="KOTA">
+KOTA-KOTA                
+ </option>
+ <option value ="KUR">
+KUR -KHURDA ROAD         
+ </option>
+ <option value ="LJN">
+LJN -LUCKNOW             
+ </option>
+ <option value ="LKO">
+LKO -LUCKNOW             
+ </option>
+ <option value ="LMG">
+LMG -LUMDING             
+ </option>
+ <option value ="MAS">
+MAS -MADRAS              
+ </option>
+ <option value ="MB">
+MB  -MORADABAD           
+ </option>
+ <option value ="MCC">
+MCC -BOMBAY CENTRAL      
+ </option>
+ <option value ="MDU">
+MDU -MADURAI             
+ </option>
+ <option value ="MGS">
+MGS-MUGALSARAI           
+ </option>
+ <option value ="MLDT">
+MLDT-MALDA               
+ </option>
+ <option value ="MYS">
+MYS -MYSORE              
+ </option>
+ <option value ="NAG">
+NAG-NAGPUR(N.G)          
+ </option>
+ <option value ="NED">
+NED-NANDED               
+ </option>
+ <option value ="NGP">
+NGP -NAGPUR(B.G)         
+ </option>
+ <option value ="PGT">
+PGT -PALGHAT             
+ </option>
+ <option value ="PR">
+PR-PAK RAILWAY
+ </option>
+ <option value ="PUNE">
+PUNE-PUNE                
+ </option>
+ <option value ="R">
+R-RAIPUR                 
+ </option>
+ <option value ="RJT">
+RJT -RAJKOT              
+ </option>
+ <option value ="RN">
+UBL -RATNAGIRI           
+ </option>
+ <option value ="RNC">
+RNC-RANCHI               
+ </option>
+ <option value ="RNY">
+RNY-RANGIYA              
+ </option>
+ <option value ="RTM">
+RTM -RATLAM              
+ </option>
+ <option value ="SA">
+SA-SALEM
+ </option>
+ <option value ="SBC">
+SBC -BANGALORE           
+ </option>
+ <option value ="SBP">
+SBP-SAMBALPUR            
+ </option>
+ <option value ="SC">
+SC  -SECUNDRABAD         
+ </option>
+ <option value ="SDAH">
+SDAH-SEALDAH             
+ </option>
+ <option value ="SEE">
+SEE -SONPUR              
+ </option>
+ <option value ="SPJ">
+SPJ -SAMASTIPUR          
+ </option>
+ <option value ="SUR">
+SUR -SOLAPUR             
+ </option>
+ <option value ="TPJ">
+TPJ -TIRUCHIRAPALLI      
+ </option>
+ <option value ="TSK">
+TSK -TINSUKIA            
+ </option>
+ <option value ="TVC">
+TVC -TRIVANDRUM          
+ </option>
+ <option value ="UBL">
+UBL -HUBLI               
+ </option>
+ <option value ="UMB">
+UMB-AMBALA CANTT         
+ </option>
+ <option value ="WAT">
+WAT -WALTAIR             
+ </option>
+</select>
+</td>
+
+<TD><b>Registration Category <font color="RED">*</font></b>
+<select name="regcategory">  <option value="1">A</option>
+<option value="2">B</option>
+<option value="3">C</option>
+
+</select></TD>
+</tr>
+</table>
+</TD>
+</TR>
+<TR>
+<TD colspan="4">
+<table width="100%" border="1">
+<TR><TD colspan="6" bgcolor="#99aadd"><b>2. Nature of the Lease Holder</b></TD></TR>
+<TR>
+<TD>Type</td><td>
+<select name="nature" onchange="notBlank_chkInd(frmcustomer.firmname);notBlank_chkInd(frmcustomer.address);toggleNature();">
+<option value="0">INDIVIDUAL</option>
+<option value="1">FIRM</option>
+<option value="2">COMPANY</option>
+<option value="3">SOCIETY</option>
+<option value="5">JOINT VENTURE</option>
+
+</select></td>
+<td>Current Business Profile:</td>
+ <TD><input type="text" size="20" maxlength="50" name="business_profile" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;" autocomplete="off" onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')"></td>
+ <td>Partnership firm:</td>
+ <td>
+  <select name="partnership_firm">
+  <option value="-1">---</option>
+  <option value="0">NO</option>
+<option value="1">YES</option>
+</select>
+  <input type="file" name="filepatnerdoc">
+</TD>
+</TR>
+</table></TD></TR>
+<TR>
+<TD colspan="4">
+<table width="100%" border="1">
+<TR><TD colspan="6" bgcolor="#99aadd"><b>3. Detail of the applicant</b></TD></TR>
+<TR>
+  <TD>Applicant Name - Address<FONT color="RED">*</FONT></TD>
+<TD colspan="3">
+<input name="name" type="text" size="20" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank(this);toggleAppName()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+-
+<input type="text" maxlength="200" size="55" name="applicant_address" onChange="this.value = (this.value).toUpperCase();toggleAppAddress()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')">
+Photo&nbsp; <input type="file" name="filephotoapp">
+</TD>
+<!--<TD></TD>-->
+</TR>
+<TR>
+<TD>Address proof type</TD>
+<TD>
+<select name="addressproftype">
+<option value="-1">--Select Address Proof</option>
+<option value="1">Latest Electricity bill</option>
+<option value="10">Unique Identification Card Aadhaar</option>
+<option value="2">Latest Telephone(Landline or Postpaid connection) bill</option>
+<option value="3">Latest Bank account statement/bank pass book</option>
+<option value="4">Passport</option>
+<option value="5">Voters Identity card</option>
+<option value="6">Property tax assessment order</option>
+<option value="7">Driving License</option>
+<option value="8">Ration card</option>
+<option value="9">Address as in Latest ITR</option>
+
+</select>
+</TD>
+<TD>Address proof document</TD><TD><input type="file" name="fileadrsprfdocu"></TD>
+</TR>
+<TR>
+<TD>Photo ID proof type</TD>
+<TD colspan="3">
+<select name="photoidproftype">
+<option value="-1">--Select Photo ID Proof</option>
+<option value="1">Voter Photo identity card issued by Election Commision of India</option>
+<option value="2">Passport</option>
+<option value="3">PAN Card issued by Income Tax Department.</option>
+<option value="4">Driving Licence issued by RTO</option>
+<option value="5">Nationalized Bank Passbok with photograph</option>
+<option value="6">Credit cards issued by banks with laminated photograph</option>
+<option value="7">Unique Identification Card Aadhaar</option>
+<option value="8">Photo identity cards having serial number issued by Public Sector Undertaking of State/Central Government, District Administration, Municipal bodies and Panchayat Administration</option>
+
+</select>
+</TD>
+</tr>
+<tr>
+<TD>Photo ID document</TD><TD><input type="file" name="filephtoidprfdocu"></TD>
+</TR>
+<TR><TD colspan="3" class="style1">Telephone No - Off :<input name="tele_off" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+<!--</TD><TD colspan="3">-->
+Resi. :
+<input name="tele_res" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+Mobile :
+<input name="tele_mob" type="text" size="11" maxlength="10" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+Fax :
+<input name="tele_fax" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+</TD>
+<TD class="style1"><B>Email</B>
+<!--</TD><TD>-->
+<input name="emailid" type="text" size="30" maxlength="50" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@-_=+[]{}\|./')">
+ </TD>
+  </TR>
+<TR>
+  <TD colspan="4">Firm's/ Company's/ Society's Name<FONT color="RED">*</FONT>
+<!--  </TD>-->
+<!--  <TD>-->
+  <input name="firmname" type="text" id="firmname2" size="55" readOnly class="ReadOnlyObj" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank_chkInd(this)" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+  </TR>
+<TR>
+  <TD colspan="4">Firm's/ Company's/ Society's Address<FONT color="RED">*</FONT>
+<!--  </TD><TD colspan="3">-->
+<input name="address" type="text" size=80 maxlength="75" readOnly class="ReadOnlyObj" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank_chkInd(this)" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')">
+</TD>
+</TR>
+<TR>
+      <td colspan="4" bgcolor="#76567a">Details of Registration of Firm/Company/Society</TD>
+  </TR>
+  <TR>
+  <TD>Certificate No</TD>
+  <TD><input type="text" maxlength="50" size="25" name="registration_dtls" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+  <TD>Issuing Authority</TD>
+  <TD><input type="text" name="txtissuauth" size="25" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+  </TR>
+  <TR>
+  <TD>Issue Date</TD>
+  <td>
+  <input type="text" name="txtregissuedt" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">&nbsp;DD/MM/YYYY
+  </td>
+  <td colspan="2"><input type="file" name="fileregsdtl"></td>
+  </TR>
+  <TR>
+      <td colspan="4" bgcolor="#76567a">Bank Account Details</TD>
+  </TR>
+  <TR>
+  <TD>Account No</TD>
+  <TD><input type="text" maxlength="25" size="25" name="bankaccntdtls" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+  <TD>IFSC Code</TD>
+  <TD><input type="text" name="bankifsccode" size="20" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+  </TR>
+  <TR>
+  <TD>MICR No.</TD>
+  <TD><input type="text" maxlength="50" size="25" name="bankmicr" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+  <TD>Bank</TD>
+  <TD><input type="text" name="bankname" size="25" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ')"></TD>
+  </TR>
+  <TR>
+  <TD>Bank Branch</TD>
+  <TD><input type="text" maxlength="50" size="25" name="bankbranch" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+    </TR>
+  </table></TD></TR>
+  <TR>
+  <TD colspan="4">
+  <table border="1" style="width:100%">
+  <TR><TD colspan="6" bgcolor="#99aadd"><b>4. Detail of Registration of Service Tax/SalesTax/TIN/PAN</b></TD></TR>
+  <tr>
+  <td>Type of Taxes Registration</td>
+  <td>
+  <select name="taxtype">
+  <option value="-1">---</option>
+  <option value="GSTIN">GSTIN</option>
+<!--  <option value="ST">SERVICE TAX</option>-->
+  <option value="SALES">SALES TAX</option><option value="TIN">TIN</option></select>
+  </td>
+  <td>No</td><td><input type="text" name="txtsrvno1" size="17" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  
+  <td>Issue Date</td>
+  <td>
+  <input type="text" name="txttaxvalidfrom" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">DD/MM/YYYY
+  <input type="hidden" name="txttaxvalidto" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" value="01/01/2099" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+  </td>
+  </tr>
+  <tr>
+  <td>Issuing Authority</td>
+  <td>  <input type="text" name="txttaxauth" size="25" maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></td>
+  <td colspan="2"><input type="file" name="filetaxdocu"></td>
+  </tr>
+  
+   <tr>
+  <td>Service Tax Registration No</td><td><input type="text" name="txtstsrvno1" size="11" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  
+  <td>Service Tax Registration Issue Date</td>
+  <td>
+  <input type="text" name="txtsttaxvalidfrom" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">DD/MM/YYYY
+  <input type="hidden" name="txtsttaxvalidto" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" value="01/01/2099" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+  </td>
+  </tr>
+  <tr>
+  <td>Service Tax Registration Issuing Authority</td>
+  <td>  <input type="text" name="txtsttaxauth" size="25" maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></td>
+  <td colspan="2"><input type="file" name="filesttaxdocu"></td>
+  </tr>
+  
+<TR>
+  <TD colspan="2">PAN Card No(Attested Copy attached)</td>
+  <TD colspan="2"><input type="text" name="txtPAN" size="11" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')">
+  <input type="file" name="filepancrd">
+  </TD>
+</TR>
+  </table>
+  </TD>
+  </TR>
+    
+
+<TR>
+<td colspan="4">
+<table width="100%" border="1">
+<tr><td colspan="7" bgcolor="#99aadd"><b> 5.Annual turnover of the business of  last three years</b></td></tr>
+<tr><td>Financial Year</td><td>Annual Turnover</td><td>CA Name</td><td>CA Address</td><td>Date Of Audit</td><td>CA Reg No</td><td>CA Email ID</td></tr>
+<tr><td>
+	<input type="text" name="annualturnoveryr1" size="8" readOnly value="2017-18"  autocomplete="off">
+	</td><td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover1" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr1"></td>
+  <td><input type="text" name="caname1" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caaddress1" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caauditdt1" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+  <td><input type="text" name="caregno1" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+  <td><input type="text" name="caemailid1" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+</tr>
+<tr><td><input type="text" name="annualturnoveryr2" size="8" readOnly value="2016-17">(Optional)</td>
+	<td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover2" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr2"></td>
+  <td><input type="text" name="caname2" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caaddress2" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caauditdt2" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+  <td><input type="text" name="caregno2" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+  <td><input type="text" name="caemailid2" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+</tr>
+<tr><td><input type="text" name="annualturnoveryr3" size="8" readOnly value="2015-16">(Optional)</td>
+<td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover3" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr3"></td>
+  <td><input type="text" name="caname3" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caaddress3" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+  <td><input type="text" name="caauditdt3" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+  <td><input type="text" name="caregno3" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+  <td><input type="text" name="caemailid3" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td></tr>
+</table>
+</td>
+  </TR>
+<tr>
+<td colspan="4">
+<table border="1" width="100%">
+<tr>
+<td colspan="4" bgcolor="#99aadd"><b>6. Location of premises from where leasing work will be conducted(within office region)</b></td>
+</tr>
+<tr>
+<td>Address</td>
+<td><input type="text" name="propaddress" size="50" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+</td>
+<td>Area in sq mts</td>
+<td><input type="text" maxlength="10" size="5" name="area_address" value="0" onKeyPress="return goodchars(event,'.0123456789')" onBlur="if(this.value=='') {this.value=0;}if(this.value=='.') {this.value=0;}" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+
+</tr>
+<tr>
+<td>Property Type</td>
+<td><select name="property_type">
+<option value="-1">---</option>
+<option value="0">OWNED</option>
+<option value="1">RENTED</option>
+</select>
+</td>
+<td>
+Photo&nbsp; <input type="file" name="filepropphoto">
+</td>
+<td> Rent Agreement/Ownership Document&nbsp; <input type="file" name="fileproptype"></td>
+</tr>
+<tr>
+<td colspan="3">Whether Lease Holder Have facility of weighment of packages</td>
+<td>
+  <select name="offwgmntmchnfclty">
+  <option value="-1">----</option>
+  <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select>
+  </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="width:100%" colspan="4">
+<table style="width:100%" border="1">
+<tr><td colspan="2" bgcolor="#99aadd"><b>7. Other Details</b></td>
+</tr>
+<tr><td>Applicant/Tenderer is already registered leaseholder in any Zonal Railway/Divisions</td><td>
+<select name="appregothrrly">
+  <option value="-1">----</option>
+  <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select></tr>
+<tr>
+<td>If yes, please attach registration document </td>
+<td><input type="file" name="fileothroffreg"></td>
+</tr>
+
+<tr><td colspan="4" bgcolor="#76567a">Applicant/ Firm or any stake holder has been blacklisted by any division or zonal railway</td>
+</tr>
+
+<tr><td>Whether registration has been cancelled by any zonal railway/division</td><td>
+<select name="regstrncancldothrrly">
+  <option value="-1">----</option>
+  <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select></td></tr>
+<tr><td>Whether you have been debarred for fresh registration by any division/zonal railway</td><td>
+<select name="debaredfrshregothrrly">
+  <option value="-1">----</option>
+ <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select></td></tr>
+<tr><td>Whether any punitive action has been taken by any of the zonal railway/division</td><td>
+<select name="puntvactothrrly">
+  <option value="-1">----</option>
+ <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select></td></tr>
+<tr><td>Whether any railway's dues are pending against them at any zonal railway/division</td><td><select name="rlyduepenothrrly">
+  <option value="-1">----</option>
+  <option value="0">NO</option>
+<option value="1">YES</option>
+
+  </select></td></tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="width:100%" colspan="4">
+<table style="width:100%" border="1">
+<TR>
+  <TD COLSPAN="4"  bgcolor="#99aadd"><B>8. Person Authorised to deal with Railways</B></TD>
+</TR>
+<TR>
+  <TD colspan="4"><B>1)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname" type="text" id="contactpersonname" size=20 maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+<!--  </TD>-->
+<!--  <TD colspan="3">-->
+  Address&nbsp;<input name="contactpersonadd" type="text" id="contactpersonadd" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+  Mobile No&nbsp;<input name="contactpersonmob" type="text" id="contactpersonmob" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+  Photo&nbsp; <input type="file" name="filephotoauthper1">
+  </TD>
+</TR>
+
+<TR>
+  <TD colspan="4"><B>2)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname1" type="text" id="contactpersonname1" size=20 maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+<!--  </TD>-->
+<!--  <TD colspan="3">-->
+  Address&nbsp;<input name="contactpersonadd1" type="text" id="contactpersonadd1" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+  Mobile No&nbsp;<input name="contactpersonmob1" type="text" id="contactpersonmob1" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+  Photo&nbsp; <input type="file" name="filephotoauthper2">
+  </TD>
+</TR>
+
+<TR>
+  <TD colspan="4"><B>3)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname2" type="text" id="contactpersonname2" size=20 maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+<!--  </TD>-->
+<!--  <TD colspan="3">-->
+  Address&nbsp;<input name="contactpersonadd2" type="text" id="contactpersonadd2" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+  Mobile No&nbsp;<input name="contactpersonmob2" type="text" id="contactpersonmob2" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+  Photo&nbsp; <input type="file" name="filephotoauthper3">
+  </TD>
+</TR>
+</table></td></tr>
+  <TR><TD COLSPAN=4 ALIGN="CENTER">
+ <img src="../Captcha.jpg" border="0" name="imgcaptcha">
+ <input type="button" value="Refresh Captcha" onClick="window.document.frmcustomer.imgcaptcha.src='';window.document.frmcustomer.imgcaptcha.src='../Captcha.jpg?random='+new Date().getTime();">
+ <input type='text' name='jcaptcha' value='' maxlength="8">
+</TD></TR>
+<TR><TD colspan="4" align="center" bgcolor="#99bbee">
+<input type="button" value="Submit" name="btnSbmt" onClick="return validate()">
+<input type="button" value="Exit" name="btnExit" onClick="document.location.href='www.parcel.indianrail.gov.in'">
+</TD>
+</TR>
+</TABLE>
+</FORM>
+Note: File Attachment limit is 5MB, Allowed files to be uploaded is PDF and JPG
+<BR>
+Disclaimer:
+<ul>
+	<li>If any information/declaration made by the Applicant/Lease Holder is found false at any stage before or after award of contract or deliberately defraud with the railways, his/her registration will be cancelled and registration fee will be forfeited. In addition to forfeiture of registration fee, all his existing leasing contracts being operated from that division would also be cancelled.</li>
+	<li>Applicant are required to submit print of this registration form along self attested documents (attached to the form) to the concerned divisional/zonal office. Registration will deemed to have been done after acceptence by the competant authority subject to verification of documents</li>
+	<li>The future correspondence will be made through fax or email also, the responsibility of receiving/opening of mail lies with the Applicant/Lease Holder</li>
+</ul>
+</BODY>
+<script> 
+var myvar= window.setInterval(function () {incrementClock();}, 1800000);
+</script>
+</HTML>
+        

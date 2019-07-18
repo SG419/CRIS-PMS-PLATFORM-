@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body bgcolor="#99ccff">
+        <div ng-app="Myapp" ng-controller="formCtrl" >
+        <form class="css-form" id="myForm" name="frmcustomer" method="post" action="../webreglh" onSubmit="return false" enctype="multipart/form-data">
+         <table border="1" width="100%" cellspacing="10" id="t1">
+                <table style="width:100%"cellspacing="10">
+                        <tr><td colspan="2" bgcolor="#dda0dd" width="10%"><b>7. Other Details</b></td>
+                        </tr>
+                        <tr><td>Applicant/Tenderer is already registered leaseholder in any Zonal Railway/Divisions</td><td>
+                        <select name="appregothrrly">
+                          <option value="-1">----</option>
+                          <option value="0">NO</option>
+                        <option value="1">YES</option>
+                        
+                          </select></tr>
+                        <tr>
+                        <td>If yes, please attach registration document </td>
+                        <td><input type="file" name="fileothroffreg"></td>
+                        </tr>
+                        
+                        <tr><td colspan="4" bgcolor="#8a33ff">Applicant/ Firm or any stake holder has been blacklisted by any division or zonal railway</td>
+                        </tr>
+                        
+                        <tr><td>Whether registration has been cancelled by any zonal railway/division</td><td>
+                        <select name="regstrncancldothrrly">
+                          <option value="-1">----</option>
+                          <option value="0">NO</option>
+                        <option value="1">YES</option>
+                        
+                          </select></td></tr>
+                        <tr><td>Whether you have been debarred for fresh registration by any division/zonal railway</td><td>
+                        <select name="debaredfrshregothrrly">
+                          <option value="-1">----</option>
+                         <option value="0">NO</option>
+                        <option value="1">YES</option>
+                        
+                          </select></td></tr>
+                        <tr><td>Whether any punitive action has been taken by any of the zonal railway/division</td><td>
+                        <select name="puntvactothrrly">
+                          <option value="-1">----</option>
+                         <option value="0">NO</option>
+                        <option value="1">YES</option>
+                        
+                          </select></td></tr>
+                        <tr><td>Whether any railway's dues are pending against them at any zonal railway/division</td><td><select name="rlyduepenothrrly">
+                          <option value="-1">----</option>
+                          <option value="0">NO</option>
+                        <option value="1">YES</option>
+                        
+                          </select></td></tr>
+                        </table>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td style="width:100%" colspan="4" cellspacing="10">
+                
+                                <div id="d1" align="center">
+                                        <button onclick="resetform();">RESET</button>
+                                        <button ng-click="update(user)">SAVE</button>
+                                        <button onclick="window.location.href='formp8.html';">NEXT</button>
+                          
+                                    </div>
+                                </form>
+                            </div>
+            
+            
+                            <style>
+                                    #t1{
+                               
+                                     margin-top: 3.5%;
+                                    }
+                                    #d1
+                                    {
+                                        margin-top:2%;
+                                    }
+                                    </style>
+            
+            <script>
+                function resetform() {
+                    document.getElementById("myForm").reset();
+                }
+                </script>
+
+        
+
+    
+</body>
+</html>

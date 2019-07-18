@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body bgcolor="#99ccff">
+        <div ng-app="Myapp" ng-controller="formCtrl" >
+        <form class="css-form" id="myForm" name="frmcustomer" method="post" action="../webreglh" onSubmit="return false" enctype="multipart/form-data">
+         <table border="1" width="100%" cellspacing="10" id="t1">
+                        <tr>
+                        <td colspan="4" bgcolor="#dda0dd" width="10%"><b>6. Location of premises from where leasing work will be conducted(within office region)</b></td>
+                        </tr>
+                        <tr>
+                        <td>Address</td>
+                        <td><input type="text" name="propaddress" size="50" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+                        </td>
+                        <td>Area in sq mts</td>
+                        <td><input type="text" maxlength="10" size="5" name="area_address" value="0" onKeyPress="return goodchars(event,'.0123456789')" onBlur="if(this.value=='') {this.value=0;}if(this.value=='.') {this.value=0;}" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+                        
+                        </tr>
+                        <tr>
+                        <td>Property Type</td>
+                        <td><select name="property_type">
+                        <option value="-1">---</option>
+                        <option value="0">OWNED</option>
+                        <option value="1">RENTED</option>
+                        </select>
+                        </td>
+                        <td>
+                        Photo&nbsp; <input type="file" name="filepropphoto">
+                        </td>
+                        <td> Rent Agreement/Ownership Document&nbsp; <input type="file" name="fileproptype"></td>
+                        </tr>
+                        <tr>
+                        <td colspan="3">Whether Lease Holder Have facility of weighment of packages</td>
+                        <td>
+                          <select name="offwgmntmchnfclty">
+                          <option value="-1">----</option>
+                          <option value="0">NO</option>
+                        <option value="1">YES</option>
+                        
+                          </select>
+                          </td>
+                        </tr>
+                        </table>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td style="width:100%" colspan="4"> 
+                                <div id="d1" align="center">
+                                        <button onclick="resetform();">RESET</button>
+                                        <button ng-click="update(user)">SAVE</button>
+                                        <button onclick="window.location.href='formp7.html';">NEXT</button>
+                          
+                                    </div>
+                                </form>
+                            </div>
+            
+            
+                            <style>
+                                    #t1{
+                               
+                                     margin-top: 3.5%;
+                                    }
+                                    #d1
+                                    {
+                                        margin-top:2%;
+                                    }
+                                    </style>
+            
+            <script>
+                function resetform() {
+                    document.getElementById("myForm").reset();
+                }
+                </script>
+
+
+
+
+</body>
+</html>

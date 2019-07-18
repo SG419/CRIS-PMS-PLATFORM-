@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body bgcolor="#99ccff">
+        <div ng-app="Myapp" ng-controller="formCtrl" >
+        <form class="css-form" id="myForm" name="frmcustomer" method="post" action="../webreglh" onSubmit="return false" enctype="multipart/form-data">
+         <table border="1" width="100%" cellspacing="10" id="t1">
+         <tr><td colspan="7" bgcolor="#dda0dd" width="10%"><b> 5.Annual turnover of the business of  last three years</b></td></tr>
+         <tr><td>Financial Year</td><td>Annual Turnover</td><td>CA Name</td><td>CA Address</td><td>Date Of Audit</td><td>CA Reg No</td><td>CA Email ID</td></tr>
+                        <tr><td>
+                            <input type="text" name="annualturnoveryr1" size="8" readOnly value="2017-18"  autocomplete="off">
+                            </td><td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover1" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr1"></td>
+                          <td><input type="text" name="caname1" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+                          <td><input type="text" name="caaddress1" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+                          <td><input type="text" name="caauditdt1" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+                          <td><input type="text" name="caregno1" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+                          <td><input type="text" name="caemailid1" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+                        </tr>
+                        <tr><td><input type="text" name="annualturnoveryr2" size="8" readOnly value="2016-17">(Optional)</td>
+                            <td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover2" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr2"></td>
+                          <td><input type="text" name="caname2" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+                          <td><input type="text" name="caaddress2" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+                          <td><input type="text" name="caauditdt2" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+                          <td><input type="text" name="caregno2" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+                          <td><input type="text" name="caemailid2" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+                        </tr>
+                        <tr><td><input type="text" name="annualturnoveryr3" size="8" readOnly value="2015-16">(Optional)</td>
+                        <td>Rs. <input type="text" maxlength="15" size="15" name="annualturnover3" onKeyPress="return goodchars(event,'.0123456789')" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false">/-  <input type="file" name="fileanltrnovr3"></td>
+                          <td><input type="text" name="caname3" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./& ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+                          <td><input type="text" name="caaddress3" maxlength="75" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+                          <td><input type="text" name="caauditdt3" maxlength="10" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'1234567890/')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10" value="DD/MM/YYYY" onclick="if(this.value=='DD/MM/YYYY'){this.value=''; this.style.color='#000000'}" onblur="if(this.value==''){this.value='DD/MM/YYYY'; this.style.color='#555555'}"></td>
+                          <td><input type="text" name="caregno3" maxlength="30" onBlur="this.value=(this.value).toUpperCase()" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')" onpaste="return false;"  autocomplete="off"  onDrop="return false" size="10"></td>
+                          <td><input type="text" name="caemailid3" maxlength="30" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@')" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td></tr>
+                        </table>
+                        </td>
+                          </TR>
+                        <tr>
+                        <td colspan="4">
+                            
+                                <div id="d1" align="center">
+                                        <button onclick="resetform();">RESET</button>
+                                        <button ng-click="update(user)">SAVE</button>
+                                        <button onclick="window.location.href='formp6.html';">NEXT</button>
+                          
+                                    </div>
+                                </form>
+                            </div>
+            
+            
+                            <style>
+                                    #t1{
+                               
+                                     margin-top: 3.5%;
+                                    }
+                                    #d1
+                                    {
+                                        margin-top:2%;
+                                    }
+                                    </style>
+            
+            <script>
+                function resetform() {
+                    document.getElementById("myForm").reset();
+                }
+                </script>
+                
+             
+             
+
+
+
+
+</body>
+</html>

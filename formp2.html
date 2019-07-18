@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body bgcolor="#99ccff">
+<div ng-app="Myapp" ng-controller="formCtrl" >
+<form class="css-form" id="myForm" name="frmcustomer" method="post" action="../webreglh" onSubmit="return false" enctype="multipart/form-data">
+    <table border="1" width="100%" cellpadding =8 cellspacing="10" id="t1">
+            <TR><TD colspan="6" bgcolor="#dda0dd" width="10%"><b>2. Nature of the Lease Holder</b></TD></TR>
+            <TR>
+            <TD>Type</td><td>
+            <select name="nature" onchange="notBlank_chkInd(frmcustomer.firmname);notBlank_chkInd(frmcustomer.address);toggleNature();">
+            <option value="0">INDIVIDUAL</option>
+            <option value="1">FIRM</option>
+            <option value="2">COMPANY</option>
+            <option value="3">SOCIETY</option>
+            <option value="5">JOINT VENTURE</option>
+            
+            </select></td>
+            <td>Current Business Profile:</td>
+             <TD><input type="text" size="20" maxlength="50" name="business_profile" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;" autocomplete="off" onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')"></td>
+             <td>Partnership firm:</td>
+             <td>
+              <select name="partnership_firm">
+              <option value="-1">---</option>
+              <option value="0">NO</option>
+            <option value="1">YES</option>
+            </select>
+              <input type="file" name="filepatnerdoc">
+            </TD>
+            </TR>
+            </table></TD></TR>
+            <TR>
+            <TD colspan="4">
+                    <div id="d1" align="center">
+                            <button onclick="resetform();">RESET</button>
+                            <button ng-click="update(user)">SAVE</button>
+                            <button onclick="window.location.href='formp3.html';">NEXT</button>
+              
+                        </div>
+                    </form>
+                    </div>
+
+
+
+                    <style>
+                            #t1{
+                       
+                             margin-top: 12%;
+                            }
+                            #d1
+                            {
+                                margin-top:2%;
+                            }
+                            </style>
+
+<script>
+        function resetform() {
+            document.getElementById("myForm").reset();
+        }
+        </script>
+        
+        
+
+        </body>
+
+
+
+
+
+
+
+
+
+    </html>
+

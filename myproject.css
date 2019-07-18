@@ -1,0 +1,343 @@
+.navbar {
+	height: 60px;
+	text-height: 50px;
+	margin-bottom: 0;
+	border-radius: 0;
+
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #00325f;
+    background-color: #ffffff;
+}
+.navbar-default .navbar-nav>li>a:hover {
+    color: #00325f;
+    background-color: transparent;
+}
+.dropdown-menu>li>a:hover {
+    color: #00325f;
+    text-decoration: none;
+    background-color: #f5f5f5;
+}
+.nav a {
+	color: red;!important;
+	font-size: 1.5em !important;
+}
+.nav li {
+	padding-right: 20px;
+}
+.navbar-header {
+	width: 70%;
+	background-color: #666;
+	font-size: 60px;
+}
+.container {
+	position: relative;
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px 0 30px 0;
+}
+/* style inputs and link buttons */
+input, .btn {
+	width: 100%;
+	padding: 12px;
+	border: none;
+	border-radius: 4px;
+	margin: 5px 0;
+	opacity: 0.85;
+	display: inline-block;
+	font-size: 17px;
+	line-height: 20px;
+	text-decoration: none; /* remove underline from anchors */
+}
+input:hover, .btn:hover {
+	opacity: 1;
+}
+/* add appropriate colors to fb, twitter and google buttons */
+.fb {
+	background-color: #3B5998;
+	color: white;
+}
+.twitter {
+	background-color: #55ACEE;
+	color: white;
+}
+.google {
+	background-color: #dd4b39;
+	color: white;
+}
+/* style the submit button */
+input[type=submit] {
+	background-color: #4CAF50;
+	color: white;
+	cursor: pointer;
+}
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+/* Two-column layout */
+.col {
+	float: left;
+	width: 50%;
+	margin: auto;
+	padding: 0 50px;
+	margin-top: 6px;
+}
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+/* vertical line */
+.vl {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%);
+	border: 2px solid #ddd;
+	height: 175px;
+}
+/* text inside the vertical line */
+.vl-innertext {
+	position: absolute;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #f1f1f1;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	padding: 8px 10px;
+}
+/* hide some text on medium and large screens */
+.hide-md-lg {
+	display: none;
+}
+/* bottom container */
+.bottom-container {
+	text-align: center;
+	background-color: #666;
+	border-radius: 0px 0px 4px 4px;
+}
+
+/* Responsive layout - when the screen is less than 650px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 650px) {
+.col {
+	width: 100%;
+	margin-top: 0;
+}
+/* hide the vertical line */
+.vl {
+	display: none;
+}
+/* show the hidden text on small screens */
+.hide-md-lg {
+	display: block;
+	text-align: center;
+}
+}
+.carousel-inner img {
+	width:100%;
+	margin: auto;
+	min-height: 200px;
+	max-height:600px;
+}
+.hr
+{
+	baccolor:#F00;
+	width:thick;
+}
+.header {
+  background-color:transparent;
+  padding: 20px;
+  margin-top:2px;
+  font-family:"Times New Roman", Times, serif;
+  font-size:20px;
+ }
+.header input[type=text] {
+    float: right;
+    padding: 6px;
+    margin-top: 5px;
+    margin-right: 5px;
+    font-size: 22px;
+}
+ .affix {
+      top: 0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+
+  .affix + .container-fluid {
+      padding-top: 70px;
+  }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 60px;
+}
+.header .fa {
+  padding: 10px;
+  font-size: 30px;
+  width: 50px;
+  height:50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px 7px;
+}
+.header .fa:hover {
+    opacity: 0.7;
+}
+.header .fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.header .fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.header .fa-google {
+  background: #dd4b39;
+  color: white;
+}
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+  color: #ffffff;
+}
+.header a.logo:hover {
+  font-size: 25px;
+  font-weight: bold;
+  color: #E16E53;
+  background-color: #05198C;
+}
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+}
+.navbar-nav > li  { 
+  background-color: #ffffff; 
+
+}
+.navbar-nav > li >a { 
+  background-color: #ffffff;
+  color: white; 
+}
+
+.navbar-nav > li > .dropdown-menu { 
+  background-color: #ffffff; 
+  color:white;
+}
+
+.navbar-collapse{
+   background-color: #ffffff; 
+}
+ 
+
+.header-site{
+  /* background-color: #000000;*/
+   background-image: url("s.jpg"); 
+   background-position: 100% 100%;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+footer {
+    background-color: #777;
+    padding: 10px;
+    text-align: center;
+    color: BLACK;
+}
+.container-fluid .text-block {
+    position: absolute;
+	
+    bottom: -1400px;
+    right: 50px;
+    background-color: transparent;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+@media screen and (min-width: 480px) {
+.content{
+	background-color: #CCC;
+	border-top-style:groove;
+	border-bottom-style: groove;
+	font-family:"Times New Roman", Times, serif;
+	font-size:20px;
+}
+
+/*footer*/
+.footer {
+  padding: 20px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #00325A;
+    color: white;
+    text-align: center;
+}
+.texttt{
+  margin-top: 30px;
+
+}
+.textt{
+  margin-top: 55px;
+
+}
+.footer-icons{
+  margin-top: 40px;
+}
+.footer-icons a{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color:  #00325A;
+  border-radius: 2px;
+
+  font-size: 30px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+.footer-icons a:hover{
+  font-size: 35px;
+  opacity: 0.7;
+}
+
+ul.list-unstyled a{
+  color: white;
+  font-size: 16px;
+
+}
+ul.list-unstyled a:hover {
+    color: #E16E53;
+    text-decoration: none;
+}
+.footer-copyright{
+  background-color: #002046;
+
+}
+
+
+
+/*end footer*/
+}
+.blinking{
+    animation:blinkingText 2s infinite;
+}
+@keyframes blinkingText{
+
+    0%{     color: lightgreen    }
+    49%{    color: yellow; }
+    50%{    color: darkblue; }
+    99%{    color:beige;  }
+    100%{   color:skyblue ;   }
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body bgcolor="#99ccff">
+<div ng-app="Myapp" ng-controller="formCtrl" >
+<form class="css-form" id="myForm" name="frmcustomer" method="post" action="../webreglh" onSubmit="return false" enctype="multipart/form-data">
+    <table border="1" width="100%" cellspacing="10" id="t1">
+            <TR><TD colspan="6" bgcolor="#dda0dd" width="10%"><b>3. Detail of the applicant</b></TD></TR>
+           
+            <tr>
+                    <TD> Applicant Name<FONT color="RED">*</FONT></TD>
+                    <TD colspan="3">
+                            <input name="name" type="text" size="20" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank(this);toggleAppName()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+    
+    
+            </tr>
+            
+            <TR>
+              <TD>Applicant Address<FONT color="RED">*</FONT></TD>
+            <TD colspan="3">
+            <input type="text" maxlength="200" size="55" name="applicant_address" onChange="this.value = (this.value).toUpperCase();toggleAppAddress()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')">
+             Photo&nbsp; <input type="file" name="filephotoapp">
+            </TD>
+    
+            <!--<TD></TD>-->
+            </TR>
+            <TR>
+            <TD>Address proof type</TD>
+            <TD>
+            <select name="addressproftype">
+            <option value="-1">--Select Address Proof</option>
+            <option value="1">Latest Electricity bill</option>
+            <option value="10">Unique Identification Card Aadhaar</option>
+            <option value="2">Latest Telephone(Landline or Postpaid connection) bill</option>
+            <option value="3">Latest Bank account statement/bank pass book</option>
+            <option value="4">Passport</option>
+            <option value="5">Voters Identity card</option>
+            <option value="6">Property tax assessment order</option>
+            <option value="7">Driving License</option>
+            <option value="8">Ration card</option>
+            <option value="9">Address as in Latest ITR</option>
+            
+            </select>
+            </TD>
+            <TD>Address proof document  <input type="file" name="fileadrsprfdocu"></TD>
+            </TR>
+            <TR>
+            <TD>Photo ID proof type</TD>
+            <TD colspan="3">
+            <select name="photoidproftype">
+            <option value="-1">--Select Photo ID Proof</option>
+            <option value="1">Voter Photo identity card issued by Election Commision of India</option>
+            <option value="2">Passport</option>
+            <option value="3">PAN Card issued by Income Tax Department.</option>
+            <option value="4">Driving Licence issued by RTO</option>
+            <option value="5">Nationalized Bank Passbok with photograph</option>
+            <option value="6">Credit cards issued by banks with laminated photograph</option>
+            <option value="7">Unique Identification Card Aadhaar</option>
+            <option value="8">Photo identity cards having serial number issued by Public Sector Undertaking of State/Central Government, District Administration, Municipal bodies and Panchayat Administration</option>
+            
+            </select>
+            </TD>
+            </tr>
+            <tr>
+            <TD>Photo ID document</TD><TD><input type="file" name="filephtoidprfdocu"></TD>
+            </TR>
+            <TR><TD colspan="3" class="style1">Telephone No - Off :<input name="tele_off" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+            <!--</TD><TD colspan="3">-->
+            Resi. :
+            <input name="tele_res" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+            Mobile :
+            <input name="tele_mob" type="text" size="11" maxlength="10" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+            Fax :
+            <input name="tele_fax" type="text" size="11" maxlength="12" onKeyPress="return numchk()" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+            </TD>
+            <TD class="style1"><B>Email</B>
+            <!--</TD><TD>-->
+            <input name="emailid" type="text" size="30" maxlength="50" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@-_=+[]{}\|./')">
+             </TD>
+              </TR>
+            <TR>
+              <TD colspan="4">Firm's/ Company's/ Society's Name<FONT color="RED">*</FONT>
+            <!--  </TD>-->
+            <!--  <TD>-->
+              <input name="firmname" type="text" id="firmname2" size="55" readOnly class="ReadOnlyObj" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank_chkInd(this)" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+              </TR>
+            <TR>
+              <TD colspan="4">Firm's/ Company's/ Society's Address<FONT color="RED">*</FONT>
+            <!--  </TD><TD colspan="3">-->
+            <input name="address" type="text" size=80 maxlength="75" readOnly class="ReadOnlyObj" onChange="this.value = (this.value).toUpperCase()" onBlur="notBlank_chkInd(this)" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')">
+            </TD>
+            </TR>
+            <TR>
+                  <td colspan="4" bgcolor="#8a33ff">Details of Registration of Firm/Company/Society</TD>
+              </TR>
+              <TR>
+              <TD>Certificate No</TD>
+              <TD><input type="text" maxlength="50" size="25" name="registration_dtls" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+              <TD>Issuing Authority</TD>
+              <TD><input type="text" name="txtissuauth" size="25" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+              </TR>
+              <TR>
+              <TD>Issue Date</TD>
+              <td>
+              <input type="text" name="txtregissuedt" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">&nbsp;DD/MM/YYYY
+              </td>
+              <td colspan="2"><input type="file" name="fileregsdtl"></td>
+              </TR>
+              <TR>
+                  <td colspan="4" bgcolor="#8a33ff">Bank Account Details</TD>
+              </TR>
+              <TR>
+              <TD>Account No</TD>
+              <TD><input type="text" maxlength="25" size="25" name="bankaccntdtls" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+              <TD>IFSC Code</TD>
+              <TD><input type="text" name="bankifsccode" size="20" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+              </TR>
+              <TR>
+              <TD>MICR No.</TD>
+              <TD><input type="text" maxlength="50" size="25" name="bankmicr" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')"></TD>
+              <TD>Bank</TD>
+              <TD><input type="text" name="bankname" size="25" maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 ')"></TD>
+              </TR>
+              <TR>
+              <TD>Bank Branch</TD>
+              <TD><input type="text" maxlength="50" size="25" name="bankbranch" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></TD>
+                </TR>
+              </table></TD></TR>
+              <TR>
+              <TD colspan="4">
+                    <div id="d1" align="center">
+                            <button onclick="resetform();">RESET</button>
+                            <button ng-click="update(user)">SAVE</button>
+                            <button onclick="window.location.href='formp4.html';">NEXT</button>
+              
+                        </div>
+                    </form>
+                </div>
+
+
+                <style>
+                        #t1{
+                   
+                         margin-top: 3.5%;
+                        }
+                        #d1
+                        {
+                            margin-top:2%;
+                        }
+                        </style>
+
+<script>
+    function resetform() {
+        document.getElementById("myForm").reset();
+    }
+    </script>
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+            </body>
+</html>

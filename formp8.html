@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body bgcolor="#99ccff">
+        <div ng-app="Myapp" ng-controller="formCtrl" >
+        <form class="css-form" id="myForm" name="frmcustomer" method="post" action="../webreglh" onSubmit="return false" enctype="multipart/form-data">
+         <table border="1" width="100%" cellspacing="10" id="t1">
+                        <TR width="10%">
+                          <TD COLSPAN="4"  bgcolor="#dda0dd" ><B>8. Person Authorised to deal with Railways</B></TD>
+                        </TR>
+                        <TR>
+                          <TD colspan="4"><B>1)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname" type="text" id="contactpersonname" size=20 maxlength="50" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+                        <!--  </TD>-->
+                        <!--  <TD colspan="3">-->
+                          Address&nbsp;<input name="contactpersonadd" type="text" id="contactpersonadd" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+                          Mobile No&nbsp;<input name="contactpersonmob" type="text" id="contactpersonmob" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+                          Photo&nbsp; <input type="file" name="filephotoauthper1">
+                          </TD>
+                        </TR>
+                        
+                        <TR>
+                          <TD colspan="4"><B>2)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname1" type="text" id="contactpersonname1" size=20 maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+                        <!--  </TD>-->
+                        <!--  <TD colspan="3">-->
+                          Address&nbsp;<input name="contactpersonadd1" type="text" id="contactpersonadd1" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+                          Mobile No&nbsp;<input name="contactpersonmob1" type="text" id="contactpersonmob1" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+                          Photo&nbsp; <input type="file" name="filephotoauthper2">
+                          </TD>
+                        </TR>
+                        
+                        <TR>
+                          <TD colspan="4"><B>3)&nbsp;&nbsp;</B>Name&nbsp;<input name="contactpersonname2" type="text" id="contactpersonname2" size=20 maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ')">
+                        <!--  </TD>-->
+                        <!--  <TD colspan="3">-->
+                          Address&nbsp;<input name="contactpersonadd2" type="text" id="contactpersonadd2" size=50 maxlength="75" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./@ ')">
+                          Mobile No&nbsp;<input name="contactpersonmob2" type="text" id="contactpersonmob2" size=12 maxlength="10"  onKeyPress="return goodchars(event,'.0123456789')" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+                          Photo&nbsp; <input type="file" name="filephotoauthper3">
+                          </TD>
+                        </TR>
+                        </table></td></tr>
+                        <div id="d1" align="center">
+                                <button onclick="resetform();">RESET</button>
+                                <button ng-click="update(user)">SAVE</button>
+                                <button onclick="window.location.href='formp8.html';">NEXT</button>
+                  
+                            </div>
+                        </form>
+                    </div>
+    
+    
+                    <style>
+                            #t1{
+                       
+                             margin-top: 3.5%;
+                            }
+                            #d1
+                            {
+                                margin-top:2%;
+                            }
+                            </style>
+    
+    <script>
+        function resetform() {
+            document.getElementById("myForm").reset();
+        }
+        </script>
+
+
+
+
+
+                    </body>
+</html>

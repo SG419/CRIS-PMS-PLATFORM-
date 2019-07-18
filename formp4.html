@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body bgcolor="#99ccff">
+        <div ng-app="Myapp" ng-controller="formCtrl" >
+        <form class="css-form" id="myForm" name="frmcustomer" method="post" action="../webreglh" onSubmit="return false" enctype="multipart/form-data">
+            <table border="1" width="100%" cellspacing="10" id="t1">
+                    <TR><TD colspan="6" bgcolor="#dda0dd" width="10%"><b>4. Detail of Registration of Service Tax/SalesTax/TIN/PAN</b></TD></TR>
+                    <tr>
+                    <td>Type of Taxes Registration</td>
+                    <td>
+                    <select name="taxtype">
+                    <option value="-1">---</option>
+                    <option value="GSTIN">GSTIN</option>
+                  <!--  <option value="ST">SERVICE TAX</option>-->
+                    <option value="SALES">SALES TAX</option><option value="TIN">TIN</option></select>
+                    </td>
+                    <td>No</td><td><input type="text" name="txtsrvno1" size="17" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+                    
+                    <td>Issue Date</td>
+                    <td>
+                    <input type="text" name="txttaxvalidfrom" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">DD/MM/YYYY
+                    <input type="hidden" name="txttaxvalidto" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" value="01/01/2099" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Issuing Authority</td>
+                    <td>  <input type="text" name="txttaxauth" size="25" maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></td>
+                    <td colspan="2"><input type="file" name="filetaxdocu"></td>
+                    </tr>
+                    
+                     <tr>
+                    <td>Service Tax Registration No</td><td><input type="text" name="txtstsrvno1" size="11" maxlength="20" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false"></td>
+                    
+                    <td>Service Tax Registration Issue Date</td>
+                    <td>
+                    <input type="text" name="txtsttaxvalidfrom" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'1234567890/')">DD/MM/YYYY
+                    <input type="hidden" name="txtsttaxvalidto" size="9" maxlength="10" onChange="this.value = (this.value).toUpperCase()" value="01/01/2099" onpaste="return false;"  autocomplete="off"  onDrop="return false">
+                    </td>
+                    </tr>
+                    <tr>
+                    <td>Service Tax Registration Issuing Authority</td>
+                    <td>  <input type="text" name="txtsttaxauth" size="25" maxlength="25" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890-_=+[]{}\|./ ')"></td>
+                    <td colspan="2"><input type="file" name="filesttaxdocu"></td>
+                    </tr>
+                    
+                  <TR>
+                    <TD colspan="2">PAN Card No(Attested Copy attached)</td>
+                    <TD colspan="2"><input type="text" name="txtPAN" size="11" maxlength="10" onChange="this.value = (this.value).toUpperCase()" onpaste="return false;"  autocomplete="off"  onDrop="return false" onKeyPress="return goodchars(event,'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890')">
+                    <input type="file" name="filepancrd">
+                    </TD>
+                  </TR>
+                    </table>
+                    </TD>
+                    </TR>
+                      
+                  
+                  <TR>
+                  <td colspan="4">
+                        <div id="d1" align="center">
+                                <button onclick="resetform();">RESET</button>
+                                <button ng-click="update(user)">SAVE</button>
+                                <button onclick="window.location.href='formp5.html';">NEXT</button>
+                  
+                            </div>
+                        </form>
+                    </div>
+    
+    
+                    <style>
+                            #t1{
+                       
+                             margin-top: 3.5%;
+                            }
+                            #d1
+                            {
+                                margin-top:2%;
+                            }
+                            </style>
+    
+    <script>
+        function resetform() {
+            document.getElementById("myForm").reset();
+        }
+        </script>
+        
+     
+     
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </body>
+</html>
